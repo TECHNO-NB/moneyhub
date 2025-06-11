@@ -1,3 +1,4 @@
+import TopUpRate from '@/components/FFTopUpRate'
 import Link from 'next/link'
 import React from 'react'
 
@@ -31,8 +32,11 @@ const page = () => {
           href="#"
           className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full transition"
         >
-          Start Top-Up Business
+          Start Top-Up Now
         </a>
+      </section>
+      <section>
+        <TopUpRate/>
       </section>
     </main>
   )
