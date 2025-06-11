@@ -8,8 +8,8 @@ const page = () => {
       {/* Navbar */}
       <nav className="bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold" ><Link href="/">MoneyHub</Link></h1>
-          <ul className="flex space-x-6 text-lg">
+          <h1 className="text-xl font-bold" ><Link href="/">MoneyHub</Link></h1>
+          <ul className="flex space-x-4 text-lg">
             <li><Link href="/stake" className="text-yellow-400 font-semibold">Stake</Link></li>
             <li><Link href="/1xbet" className="hover:text-yellow-400">1xbet</Link></li>
             <li><Link href="/ff-topup" className="hover:text-yellow-400">FF Topup</Link></li>

@@ -8,10 +8,10 @@ export default function Home() {
       {/* Navbar */}
       <nav className="bg-black text-white border-b-1">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">
+          <h1 className=" text-xl md:text-2xl font-bold">
             <Link href="/">MoneyHub</Link>
           </h1>
-          <ul className="flex space-x-6 text-lg">
+          <ul className="flex space-x-4 text-lg">
             <li>
               <Link href="/stake" className="text-yellow-400 font-semibold">
                 Stake
@@ -34,7 +34,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-10 md:py-20 gap-12">
         <div className="w-full md:w-1/2 text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+          <h2 className="text-4xl md:text-5xl text-white font-bold leading-tight mb-6">
             Get started to earn money with{" "}
             <span className="text-yellow-500">MoneyHub</span>
           </h2>
