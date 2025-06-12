@@ -45,7 +45,7 @@ export default function TopUpRate() {
               💎 {diamonds}
             </div>
             <div className="text-gray-600 text-sm mt-1">
-              Rs. {price.toLocaleString("id-ID")}
+              Rs. {price}
             </div>
           </div>
         ))}
