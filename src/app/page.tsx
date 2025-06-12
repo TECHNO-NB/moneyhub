@@ -1,20 +1,26 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Review from "@/components/Reviw";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black">
-      {/* Navbar */}
-      <nav className="bg-black text-white border-b-1">
+      {/* Navbar with animation */}
+      <motion.nav
+        className="bg-black text-white border-b-1"
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className=" text-xl md:text-2xl font-bold">
+          <h1 className="text-xl md:text-2xl font-bold text-yellow-400">
             <Link href="/">MoneyHub</Link>
           </h1>
           <ul className="flex space-x-4 text-lg">
             <li>
-              <Link href="/stake" className="text-yellow-400 font-semibold">
+              <Link href="/stake" className="hover:text-yellow-400 font-semibold">
                 Stake
               </Link>
             </li>
@@ -30,11 +36,16 @@ export default function Home() {
             </li>
           </ul>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Hero Section */}
       <section className="flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-10 md:py-20 gap-12">
-        <div className="w-full md:w-1/2 text-center md:text-left">
+        <motion.div
+          className="w-full md:w-1/2 text-center md:text-left"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <h2 className="text-4xl md:text-5xl text-white font-bold leading-tight mb-6">
             Get started to earn money with{" "}
             <span className="text-yellow-500">MoneyHub</span>
@@ -49,23 +60,34 @@ export default function Home() {
           >
             Start Earning
           </a>
-        </div>
-        <div className="w-full md:w-1/2">
+        </motion.div>
+
+        <motion.div
+          className="w-full md:w-1/2"
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           <img
             src="https://images.unsplash.com/photo-1600586316434-29a13a4f9aa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8MXx8ZWFybmluZyUyMG1vbmV5fHwwfHx8fDE2MzA0NzQxODk&ixlib=rb-1.2.1&q=80&w=1080"
             alt="Earning Illustration"
-            className="w-52  md:w-full max-w-sm mx-auto rounded-full"
+            className="w-52 md:w-full max-w-sm mx-auto rounded-full"
           />
-        </div>
+        </motion.div>
       </section>
 
-    
       {/* Earnings Logos Section */}
       <section id="earn" className="bg-gray-100 py-16">
-        <h3 className="text-center text-3xl font-bold mb-10 text-yellow-500 border-yellow-400 border-2">
+        <h3 className="text-center text-3xl font-bold mb-10 text-yellow-500 border-yellow-400 border-2 inline-block px-4 py-2">
           Earn Through Trusted Platforms
         </h3>
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-4 place-content-center items-center justify-center">
+        <motion.div
+          className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-4 place-content-center items-center justify-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <Link href={"/stake"}>
             <img
               src="https://logos-world.net/wp-content/uploads/2021/05/Stake-Logo.png"
@@ -87,10 +109,12 @@ export default function Home() {
               className="w-3xl h-52 mx-auto"
             />
           </Link>
-        </div>
+        </motion.div>
       </section>
+
+      {/* Reviews Section */}
       <section>
-      <Review/>
+        <Review />
       </section>
     </main>
   );

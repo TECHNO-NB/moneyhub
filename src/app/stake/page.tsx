@@ -1,48 +1,91 @@
-import StakeEarningsPics from '@/components/StakeEarningPics'
-import Link from 'next/link'
-import React from 'react'
+"use client";
+
+import StakeEarningsPics from '@/components/StakeEarningPics';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import React from 'react';
 
 const page = () => {
   return (
-    <div>
-       <main className="min-h-screen bg-white">
-      {/* Navbar */}
-      <nav className="bg-black text-white">
+    <main className="min-h-screen bg-white">
+      {/* Navbar with animation */}
+      <motion.nav
+        className="bg-black text-white"
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold" ><Link href="/">MoneyHub</Link></h1>
+          <h1 className="text-xl font-bold">
+            <Link href="/">MoneyHub</Link>
+          </h1>
           <ul className="flex space-x-4 text-lg">
-            <li><Link href="/stake" className="text-yellow-400 font-semibold">Stake</Link></li>
-            <li><Link href="/1xbet" className="hover:text-yellow-400">1xbet</Link></li>
-            <li><Link href="/ff-topup" className="hover:text-yellow-400">FF Topup</Link></li>
+            <li>
+              <Link href="/stake" className="text-yellow-400 font-semibold">
+                Stake
+              </Link>
+            </li>
+            <li>
+              <Link href="/1xbet" className="hover:text-yellow-400">
+                1xbet
+              </Link>
+            </li>
+            <li>
+              <Link href="/ff-topup" className="hover:text-yellow-400">
+                FF Topup
+              </Link>
+            </li>
           </ul>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Stake Page Content */}
       <section className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-6">Earn with Stake</h2>
-        <p className="text-lg text-gray-600 mb-10">
-          Start earning real money by referring users to Stake or investing in games. Monitor your earnings and get paid instantly with MoneyHub.
-        </p>
-        <div className='w-full '>
+        <motion.h2
+          className="text-4xl font-bold text-gray-800 mb-6"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          Earn with Stake
+        </motion.h2>
+        <motion.p
+          className="text-lg text-gray-600 mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          Start earning real money by referring users to Stake or investing in
+          games. Monitor your earnings and get paid instantly with MoneyHub.
+        </motion.p>
 
-        <img
-          src="https://logos-world.net/wp-content/uploads/2021/05/Stake-Logo.png"
-          alt="Stake earnings"
-          className=" w-fit h-42 mx-auto mb-8"
+        <motion.div
+          className="w-full"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+        >
+          <img
+            src="https://logos-world.net/wp-content/uploads/2021/05/Stake-Logo.png"
+            alt="Stake earnings"
+            className="w-auto h-32 mx-auto mb-8"
           />
-          </div>
-        <a
+        </motion.div>
+
+        <motion.a
           href="#"
-          className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full transition"
+          className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full transition inline-block"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           Start Earning with Stake
-        </a>
+        </motion.a>
       </section>
-    <StakeEarningsPics/>
-    </main>
-    </div>
-  )
-}
 
-export default page
+      {/* Gallery or Other Earnings Display */}
+      <StakeEarningsPics />
+    </main>
+  );
+};
+
+export default page;
