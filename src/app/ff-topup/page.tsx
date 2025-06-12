@@ -69,7 +69,7 @@ const page = () => {
         />
 
         <motion.a
-          href="#"
+          href="https://chat.whatsapp.com/Fl02NOd4JVgKnoYECvSi2l"
           className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full transition inline-block"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
