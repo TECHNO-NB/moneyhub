@@ -1,3 +1,4 @@
+import StakeEarningsPics from '@/components/StakeEarningPics'
 import Link from 'next/link'
 import React from 'react'
 
@@ -38,6 +39,7 @@ const page = () => {
           Start Earning with Stake
         </a>
       </section>
+    <StakeEarningsPics/>
     </main>
     </div>
   )

@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ['i.ytimg.com', 'th.bing.com','preview.redd.it','pbs.twimg.com'],
+  },
 };
 
 export default nextConfig;
