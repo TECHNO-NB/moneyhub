@@ -1,5 +1,6 @@
 "use client";
 
+import Review from "@/components/Reviw";
 import Link from "next/link";
 
 export default function Home() {
@@ -58,6 +59,7 @@ export default function Home() {
         </div>
       </section>
 
+    
       {/* Earnings Logos Section */}
       <section id="earn" className="bg-gray-100 py-16">
         <h3 className="text-center text-3xl font-bold mb-10 text-yellow-500 border-yellow-400 border-2">
@@ -86,6 +88,9 @@ export default function Home() {
             />
           </Link>
         </div>
+      </section>
+      <section>
+      <Review/>
       </section>
     </main>
   );
