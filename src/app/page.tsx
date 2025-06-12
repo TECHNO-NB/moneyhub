@@ -77,8 +77,8 @@ export default function Home() {
       </section>
 
       {/* Earnings Logos Section */}
-      <section id="earn" className="bg-gray-100 py-16">
-        <h3 className="text-center text-3xl font-bold mb-10 text-yellow-500 border-yellow-400 border-2 inline-block px-4 py-2">
+      <section id="earn" className="bg-gray-100 py-16 text-center">
+        <h3 className=" text-3xl font-bold mb-10 text-yellow-500 border-yellow-400 border-2 inline-block px-4 py-2 text-center">
           Earn Through Trusted Platforms
         </h3>
         <motion.div
@@ -106,7 +106,7 @@ export default function Home() {
             <img
               src="https://static.vecteezy.com/system/resources/previews/022/100/664/original/free-fire-logo-free-png.png"
               alt="Dollar"
-              className="w-3xl h-52 mx-auto"
+              className="w-3xl h-52 mx-auto "
             />
           </Link>
         </motion.div>

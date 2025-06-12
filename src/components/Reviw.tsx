@@ -12,21 +12,21 @@ type Review = {
 
 const reviews: Review[] = [
   {
-    name: 'Aarav Singh',
+    name: 'Manjil shrestha',
     role: 'App User',
     image: 'https://i.pinimg.com/originals/82/30/b3/8230b3e601bd66e593423e8004058d84.jpg',
     message:
       'This app made it so easy to track my income and goals. Highly recommended for anyone trying to grow financially!',
   },
   {
-    name: 'Priya Mehta',
+    name: 'Priya Sen',
     role: 'Freelancer',
     image: 'https://tse1.mm.bing.net/th/id/OIP.hGVGX2jNoIiTRqjdoqC5aQHaHa?rs=1&pid=ImgDetMain',
     message:
       'Super intuitive and visually pleasing. Helped me save over ₹10,000 in 3 months.',
   },
   {
-    name: 'Rohan Kumar',
+    name: 'Rohan Adhikari',
     role: 'Startup Owner',
     image: 'https://th.bing.com/th/id/OIP.U6rm5wta2mibBpipMjcglQHaLG?w=204&h=306&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3',
     message:
