@@ -20,7 +20,10 @@ export default function Home() {
           </h1>
           <ul className="flex space-x-4 text-lg">
             <li>
-              <Link href="/stake" className="hover:text-yellow-400 font-semibold">
+              <Link
+                href="/stake"
+                className="hover:text-yellow-400 font-semibold"
+              >
                 Stake
               </Link>
             </li>
@@ -50,11 +53,10 @@ export default function Home() {
             Get started to earn money with{" "}
             <span className="text-yellow-500">MoneyHub</span>
           </h2>
-          <p className="text-white text-lg mb-6">
-            Join thousands of users making daily income through Stake, 1xbet Also 
-            Availabe FF TopUp, Tiktok Coin, Like Views And Followers, Facebook Views, Like And Followers,
-            CapCut, Remini, PicArts, Youtube And Netflix Preimun.
-
+          <p className="text-white text-[] mb-6">
+            Join thousands of users making daily income through Stake, 1xbet
+            Also Availabe FF TopUp, Tiktok Coin,Facebook,TikTok Like Views And
+            Followers, CapCut, Remini, PicArts, Youtube And Netflix Preimun.
           </p>
           <a
             href="#earn"
