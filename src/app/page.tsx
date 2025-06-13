@@ -58,41 +58,57 @@ export default function Home() {
       </section>
 
       {/* Earnings Logos Section */}
-      <section id="earn" className="bg-gray-100 py-16 text-center items-center">
-        <h3 className=" text-3xl font-bold mb-10 text-yellow-500 border-yellow-400 border-2 inline-block px-4 py-2 text-center">
-          Earn Through Trusted Platforms
-        </h3>
-        <motion.div
-          className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 px-4 place-content-center items-center justify-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <Link href={"/stake"}>
-            <img
-              src="https://logos-world.net/wp-content/uploads/2021/05/Stake-Logo.png"
-              alt="UPI"
-              className="w-3xl h-20 mx-auto"
-            />
-          </Link>
-          <Link href={"/1xbet"}>
-            <img
-              src="https://tse2.mm.bing.net/th/id/OIP.Ae7CUtOJYUOCgWN3nJSYfAHaBp?rs=1&pid=ImgDetMain"
-              alt="Money Bag"
-              className="w-3xl h-20 mx-auto"
-            />
-          </Link>
-          <Link href="/ff-topup">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/022/100/664/original/free-fire-logo-free-png.png"
-              alt="Dollar"
-              className="w-3xl h-52 mx-auto "
-            />
-          </Link>
-        </motion.div>
-      </section>
+           <section
+        id="earn"
+        className="relative bg-white py-20 overflow-hidden"
+      >
+        {/* Decorative texture background */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-10 pointer-events-none" />
 
+        <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
+          <h3 className="text-4xl font-bold mb-12 text-yellow-400 border-yellow-400 border-2 inline-block px-6 py-3 rounded-xl shadow-md">
+            Earn Through Trusted Platforms
+          </h3>
+
+          <motion.div
+            className="grid grid-cols-2  md:grid-cols-1 lg:grid-cols-3 gap-10 items-center justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/stake">
+              <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-center items-center h-40">
+                <img
+                  src="https://logos-world.net/wp-content/uploads/2021/05/Stake-Logo.png"
+                  alt="Stake"
+                  className="h-16 object-contain"
+                />
+              </div>
+            </Link>
+
+            <Link href="/1xbet">
+              <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-center items-center h-40">
+                <img
+                  src="https://tse2.mm.bing.net/th/id/OIP.Ae7CUtOJYUOCgWN3nJSYfAHaBp?rs=1&pid=ImgDetMain"
+                  alt="1xBet"
+                  className="h-16 object-contain"
+                />
+              </div>
+            </Link>
+
+            <Link href="/ff-topup">
+              <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-center items-center h-52">
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/022/100/664/original/free-fire-logo-free-png.png"
+                  alt="Free Fire Top-up"
+                  className="h-full object-contain"
+                />
+              </div>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
       {/* Reviews Section */}
       <section>
         <Review />
