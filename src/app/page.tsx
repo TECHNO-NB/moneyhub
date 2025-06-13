@@ -39,20 +39,22 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-10 md:py-20 gap-12">
+      <section className="flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-4 md:py-20 gap-12">
         <motion.div
           className="w-full md:w-1/2 text-center md:text-left"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-4xl md:text-5xl text-white font-bold leading-tight mb-6">
+          <h2 className="text-4xl md:text-5xl text-white font-bold leading-tight mb-4">
             Get started to earn money with{" "}
             <span className="text-yellow-500">MoneyHub</span>
           </h2>
           <p className="text-white text-lg mb-6">
-            Join thousands of users making daily income through Stake, 1xbet,
-            and FF Topups.
+            Join thousands of users making daily income through Stake, 1xbet Also 
+            Availabe FF TopUp, Tiktok Coin, Like Views And Followers, Facebook Views, Like And Followers,
+            CapCut, Remini, PicArts, Youtube And Netflix Preimun.
+
           </p>
           <a
             href="#earn"
