@@ -1,44 +1,13 @@
 "use client";
 
-import TopUpRate from '@/components/FFTopUpRate';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import React from 'react';
+import TopUpRate from "@/components/FFTopUpRate";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import React from "react";
 
 const page = () => {
   return (
     <main className="min-h-screen bg-white">
-      {/* Navbar with animation */}
-      <motion.nav
-        className="bg-black text-white"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">
-            <Link href="/">MoneyHub</Link>
-          </h1>
-          <ul className="flex space-x-4 text-lg">
-            <li>
-              <Link href="/stake" className="hover:text-yellow-400 font-semibold">
-                Stake
-              </Link>
-            </li>
-            <li>
-              <Link href="/1xbet" className="hover:text-yellow-400">
-                1xbet
-              </Link>
-            </li>
-            <li>
-              <Link href="/ff-topup" className="text-yellow-400">
-                FF Topup
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </motion.nav>
-
       {/* FF TopUp Content */}
       <section className="max-w-4xl mx-auto px-4 py-20 text-center">
         <motion.h2
@@ -56,7 +25,8 @@ const page = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Top up Free Fire diamonds for users and earn profits on every transaction. Fast service, trusted by gamers, and great margins.
+          Top up Free Fire diamonds for users and earn profits on every
+          transaction. Fast service, trusted by gamers, and great margins.
         </motion.p>
 
         <motion.img

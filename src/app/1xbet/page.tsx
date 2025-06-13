@@ -1,43 +1,12 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import React from 'react';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import React from "react";
+import { motion } from "framer-motion";
 
 const page = () => {
   return (
     <main className="min-h-screen bg-white">
-      {/* Animated Navbar */}
-      <motion.nav
-        className="bg-black text-white"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">
-            <Link href="/">MoneyHub</Link>
-          </h1>
-          <ul className="flex space-x-4 text-lg">
-            <li>
-              <Link href="/stake" className="hover:text-yellow-400 font-semibold">
-                Stake
-              </Link>
-            </li>
-            <li>
-              <Link href="/1xbet" className="text-yellow-400">
-                1xbet
-              </Link>
-            </li>
-            <li>
-              <Link href="/ff-topup" className="hover:text-yellow-400">
-                FF Topup
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </motion.nav>
-
       {/* 1xbet Content */}
       <section className="max-w-4xl mx-auto px-4 py-20 text-center">
         <motion.h2
@@ -55,7 +24,8 @@ const page = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Promote 1xbet, refer users, and earn commissions on their bets. Reliable payouts, trusted platform, and unlimited earning potential.
+          Promote 1xbet, refer users, and earn commissions on their bets.
+          Reliable payouts, trusted platform, and unlimited earning potential.
         </motion.p>
 
         <motion.img

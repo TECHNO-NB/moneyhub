@@ -1,66 +1,43 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import Review from "@/components/Reviw";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className=" relative min-h-screen bg-black">
+      <motion.div
+        initial={{ y: -100, z: -100, opacity: 0 }}
+        animate={{ y: -0, z: 0, opacity: 1 }}
+        transition={{ duration: 2, ease: easeInOut }}
+        className="gradinet absolute w-16 h-68 -rotate-42 rounded-full bg-blue-600 top-36  blur-2xl shadow-2xl bg-gradient-to-b left-22"
+      ></motion.div>
       {/* Navbar with animation */}
-      <motion.nav
-        className="bg-black text-white border-b-1"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl md:text-2xl font-bold text-yellow-400">
-            <Link href="/">MoneyHub</Link>
-          </h1>
-          <ul className="flex space-x-4 text-lg">
-            <li>
-              <Link
-                href="/stake"
-                className="hover:text-yellow-400 font-semibold"
-              >
-                Stake
-              </Link>
-            </li>
-            <li>
-              <Link href="/1xbet" className="hover:text-yellow-400">
-                1xbet
-              </Link>
-            </li>
-            <li>
-              <Link href="/ff-topup" className="hover:text-yellow-400">
-                FF Topup
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </motion.nav>
+
+     
 
       {/* Hero Section */}
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-4 md:py-20 gap-12">
+      <section className=" relative z-50 flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-4 md:py-20 gap-12">
         <motion.div
           className="w-full md:w-1/2 text-center md:text-left"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-4xl md:text-5xl text-white font-bold leading-tight mb-4">
+          <h2 className="text-4xl md:text-5xl z-50 text-white font-bold leading-tight mb-2">
             Get started to earn money with{" "}
-            <span className="text-yellow-500">MoneyHub</span>
+            <span className="text-yellow-500 z-50">MoneyHub</span>
           </h2>
           <p className="text-white text-[] mb-6">
             Join thousands of users making daily income through Stake, 1xbet
             Also Availabe FF TopUp, Tiktok Coin,Facebook,TikTok Like Views And
             Followers, CapCut, Remini, PicArts, Youtube And Netflix Preimun.
           </p>
+
           <a
             href="#earn"
-            className="inline-block bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition"
+            className="inline-block bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition mb-4"
           >
             Start Earning
           </a>
@@ -75,13 +52,13 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1600586316434-29a13a4f9aa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8MXx8ZWFybmluZyUyMG1vbmV5fHwwfHx8fDE2MzA0NzQxODk&ixlib=rb-1.2.1&q=80&w=1080"
             alt="Earning Illustration"
-            className="w-52 md:w-full max-w-sm mx-auto rounded-full"
+            className="w-52 md:w-full max-w-sm mx-auto rounded-full pt-4"
           />
         </motion.div>
       </section>
 
       {/* Earnings Logos Section */}
-      <section id="earn" className="bg-gray-100 py-16 text-center">
+      <section id="earn" className="bg-gray-100 py-16 text-center items-center">
         <h3 className=" text-3xl font-bold mb-10 text-yellow-500 border-yellow-400 border-2 inline-block px-4 py-2 text-center">
           Earn Through Trusted Platforms
         </h3>
