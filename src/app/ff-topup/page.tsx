@@ -2,7 +2,7 @@
 
 import TopUpRate from "@/components/FFTopUpRate";
 import { motion } from "framer-motion";
-import Link from "next/link";
+
 import React from "react";
 
 const page = () => {

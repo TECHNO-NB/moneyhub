@@ -2,7 +2,7 @@
 
 import StakeEarningsPics from "@/components/StakeEarningPics";
 import { motion } from "framer-motion";
-import Link from "next/link";
+
 import React from "react";
 
 const page = () => {
