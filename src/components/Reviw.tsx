@@ -59,6 +59,8 @@ export default function Review() {
               <Image
                 src={reviews[index].image}
                 alt={reviews[index].name}
+                width={100}
+                height={100}
                 className="w-24 h-24 rounded-full object-cover border-4 border-indigo-500 shadow-md"
               />
               <p className="text-gray-600 text-lg italic">“{reviews[index].message}”</p>

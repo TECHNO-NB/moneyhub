@@ -11,7 +11,7 @@ export default function Home() {
         initial={{ y: -100, z: -100, opacity: 0 }}
         animate={{ y: -0, z: 0, opacity: 1 }}
         transition={{ duration: 2, ease: easeInOut }}
-        className="gradinet absolute w-16 h-68 -rotate-42 rounded-full bg-blue-600 top-36  blur-4xl shadow-4xl bg-gradient-to-b left-22"
+        className="gradinet absolute w-16 h-68 -rotate-42 rounded-full bg-blue-600 top-36  blur-2xl shadow-4xl bg-gradient-to-b left-22"
       ></motion.div>
       {/* Navbar with animation */}
 
