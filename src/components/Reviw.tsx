@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
+import Image from 'next/image';
 
 type Review = {
   name: string;
@@ -55,7 +56,7 @@ export default function Review() {
               transition={{ duration: 0.4 }}
               className="flex flex-col items-center text-center space-y-4"
             >
-              <img
+              <Image
                 src={reviews[index].image}
                 alt={reviews[index].name}
                 className="w-24 h-24 rounded-full object-cover border-4 border-indigo-500 shadow-md"
