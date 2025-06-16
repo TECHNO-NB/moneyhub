@@ -6,7 +6,7 @@ const Footer = () => {
 <footer className="bg-black text-white mt-0 md:mt-20">
   <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
     <div>
-      <h2 className="text-2xl font-bold mb-4">MoneyHub</h2>
+      <h2 className="text-2xl font-bold mb-4 text-yellow-400">MoneyHub</h2>
       <p className="text-sm text-gray-400">
         Earn money online with trusted platforms like Stake, 1xBet, and FF TopUp. Start your journey with MoneyHub today.
       </p>

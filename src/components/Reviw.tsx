@@ -41,12 +41,12 @@ export default function Review() {
   const prev = () => setIndex((index - 1 + reviews.length) % reviews.length);
 
   return (
-    <main className=" max-h-fit bg-gradient-to-br py-32 from-yellow-400 to-white flex items-center justify-center px-8">
+    <main className=" max-h-fit bg-black flex items-center justify-center px-8 py-6 ">
       <div className="w-full max-w-2xl">
-        <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-10 text-yellow-400">
            What Our Users Say
         </h2>
-        <div className="relative bg-white rounded-3xl shadow-2xl p-8">
+        <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-4 border-yellow-400">
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
@@ -54,6 +54,7 @@ export default function Review() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -40 }}
               transition={{ duration: 0.4 }}
+               viewport={{ once: true }}
               className="flex flex-col items-center text-center space-y-4"
             >
               <Image
@@ -74,7 +75,7 @@ export default function Review() {
           <div className="absolute top-1/2 -left-6 transform -translate-y-1/2">
             <button
               onClick={prev}
-              className="text-indigo-500 hover:text-indigo-700 transition-transform transform hover:scale-110"
+              className="text-yellow-400 hover:text-indigo-700 bg-white rounded-full transition-transform transform hover:scale-110"
               aria-label="Previous review"
             >
               <ArrowLeftCircle size={40} />
@@ -83,7 +84,7 @@ export default function Review() {
           <div className="absolute top-1/2 -right-6  transform -translate-y-1/2">
             <button
               onClick={next}
-              className="text-indigo-500 hover:text-indigo-700 transition-transform transform hover:scale-110"
+              className="text-yellow-400 bg-white rounded-full hover:text-indigo-700 transition-transform transform hover:scale-110"
               aria-label="Next review"
             >
               <ArrowRightCircle size={40} />
