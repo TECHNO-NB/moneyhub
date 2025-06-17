@@ -4,11 +4,13 @@ import { easeInOut, motion } from "framer-motion";
 import Review from "@/components/Reviw";
 import Image from "next/image";
 import PlatForms from "@/components/PlatForms";
+import WarningModal from "@/components/WarningModal";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-black overflow-hidden">
       {/* Top Gradient Blob */}
+      <WarningModal/>
       <motion.div
         initial={{ scale: 0.5, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
