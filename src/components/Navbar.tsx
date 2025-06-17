@@ -25,7 +25,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         {/* Brand */}
-        <h1 className="text-xl md:text-2xl font-bold text-yellow-400">
+        <h1 className="text-xl md:text-2xl font-bold text-yellow-400" onClick={() => setIsOpen(false)}>
           <Link href="/">MoneyHub</Link>
         </h1>
 

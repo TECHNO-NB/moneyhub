@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
-import React from 'react';
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import React from "react";
 
 const PlatForms = () => {
   return (
@@ -62,7 +62,19 @@ const PlatForms = () => {
               />
             </div>
           </Link>
+        </motion.div>
 
+        {/* Other services we provide */}
+        <h3 className="text-4xl font-bold mb-10 mt-8 text-yellow-400 border-yellow-400 inline-block px-6 py-3 rounded-xl shadow-md">
+          Our Others Services
+        </h3>
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-3 gap-10 items-center justify-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <Link href="/ff-topup">
             <div className="bg-white border-4 border-yellow-400 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-center items-center h-40">
               <Image
@@ -74,7 +86,6 @@ const PlatForms = () => {
               />
             </div>
           </Link>
-
           <Link href="/tiktok">
             <div className="bg-white border-4 border-yellow-400 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-center items-center h-40">
               <Image

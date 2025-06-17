@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, easeInOut } from 'framer-motion';
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
 import Image from 'next/image';
 
@@ -42,6 +42,18 @@ export default function Review() {
 
   return (
     <main className=" max-h-fit bg-black flex items-center justify-center px-8 py-6 ">
+        <motion.div
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 2, ease: easeInOut }}
+        className="absolute w-96 h-56 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full blur-3xl opacity-40 top-48 left-36 z-0"
+      ></motion.div>
+       <motion.div
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 2, ease: easeInOut }}
+        className="absolute w-46 h-26 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full blur-3xl opacity-40 top-10 -left-10 z-0"
+      ></motion.div>
       <div className="w-full max-w-2xl">
         <h2 className="text-4xl font-bold text-center mb-10 text-yellow-400">
            What Our Users Say
