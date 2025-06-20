@@ -97,6 +97,17 @@ const PlatForms = () => {
               />
             </div>
           </Link>
+          <Link href="/instagram">
+            <div className="bg-white border-4 border-yellow-400 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-center items-center h-40">
+              <Image
+                src="https://cdn1.iconfinder.com/data/icons/social-circle-3/32/instagram_circle-512.png"
+                alt="TikTok Coins"
+                width={120}
+                height={64}
+                className="h-full object-contain"
+              />
+            </div>
+          </Link>
 
           <Link href="/capcut">
             <div className="bg-white border-4 border-yellow-400 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-center items-center h-40">

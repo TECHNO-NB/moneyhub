@@ -14,7 +14,9 @@ const nextConfig: NextConfig = {
       "tse2.mm.bing.net",
       "static.vecteezy.com",
       "tse1.mm.bing.net",
-      "pngimg.com"
+      "pngimg.com",
+      "cdn1.iconfinder.com"
+    
     ],
   },
 };
