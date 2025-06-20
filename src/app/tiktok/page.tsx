@@ -87,7 +87,7 @@ const page = () => {
           Grow Your TikTok 🚀
         </h1>
         <p className="text-center max-w-xl mt-4 text-gray-300">
-          Buy real TikTok views, likes, and followers to boost your account's
+          Buy real TikTok views, likes, and followers to boost your accounts
           growth and engagement. Fast delivery and affordable pricing!
         </p>
       </motion.div>

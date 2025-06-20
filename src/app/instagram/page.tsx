@@ -83,7 +83,7 @@ const page = () => {
           Grow Your Instagram 🚀
         </h1>
         <p className="text-center max-w-xl mt-4 text-gray-300">
-          Buy real InstaGram views, likes, and followers to boost your account's
+          Buy real InstaGram views, likes, and followers to boost your account
           growth and engagement. Fast delivery and affordable pricing!
         </p>
       </motion.div>
