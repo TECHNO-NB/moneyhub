@@ -12,19 +12,19 @@ const services = [
   },
   {
     title: "TikTok Views",
-    price: "Rs.100 / 1 Lakh",
+    price: "Rs.200 / 1 Lakh",
 
     logo: "https://static.vecteezy.com/system/resources/previews/016/716/450/original/tiktok-icon-free-png.png",
   },
   {
     title: "TikTok Views",
-    price: "Rs.250 / 5 Lakh",
+    price: "Rs.700 / 5 Lakh",
 
     logo: "https://static.vecteezy.com/system/resources/previews/016/716/450/original/tiktok-icon-free-png.png",
   },
   {
     title: "TikTok Views",
-    price: "Rs.400 / 1 M.",
+    price: "Rs.1300 / 1 M.",
 
     logo: "https://static.vecteezy.com/system/resources/previews/016/716/450/original/tiktok-icon-free-png.png",
   },
@@ -110,10 +110,10 @@ const page = () => {
               height={50}
               className="mb-3"
             />
-            <h2 className="text-xl font-semibold text-white mb-2">
+            <h2 className="text-[1em] font-semibold text-white mb-2">
               {service.title}
             </h2>
-            <p className="text-lg text-emerald-400 font-bold mb-2">
+            <p className="text-[1em] text-emerald-400 font-bold mb-2">
               {service.price}
             </p>
           </motion.div>
