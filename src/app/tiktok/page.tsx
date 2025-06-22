@@ -128,7 +128,8 @@ const page = () => {
         className="mt-16 flex justify-center"
       >
         <a
-          href="https://chat.whatsapp.com/Fl02NOd4JVgKnoYECvSi2l"
+          // href="https://chat.whatsapp.com/Fl02NOd4JVgKnoYECvSi2l"
+           href={`https://wa.me/9779869436906?text=Hello%2C%20I'm%20interested%20in%20your%20services`}
           target="_blank"
           rel="noopener noreferrer"
           className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl text-lg font-semibold shadow-lg transition"
