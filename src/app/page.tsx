@@ -15,7 +15,7 @@ export default function Home() {
         initial={{ scale: 0.5, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 2, ease: easeInOut }}
-        className="absolute w-96 h-96 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full blur-3xl opacity-30 top-16 left-10 z-0"
+        className="absolute w-96 h-96 md:w-26 md:h-96 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full blur-3xl opacity-30 md:rotate-12 top-16 md:top-4 left-10 md:left-16 z-0"
       ></motion.div>
 
       {/* Hero Section */}

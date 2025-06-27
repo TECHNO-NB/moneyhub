@@ -4,10 +4,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaWhatsapp, FaTelegramPlane } from "react-icons/fa";
 import StakeEarningsPics from "@/components/StakeEarningPics";
+import WarningModal from "@/components/WarningModal";
 
 const page = () => {
   return (
     <main className="min-h-screen bg-white px-4">
+      <WarningModal/>
       <section className="max-w-4xl mx-auto pt-20 pb-10 text-center">
         {/* Title */}
         <motion.h2

@@ -10,6 +10,7 @@ const navLinks = [
   { href: "/stake", label: "Stake" },
   { href: "/1xbet", label: "1xbet" },
   { href: "/ff-topup", label: "FF Topup" },
+  { href: "/tiktok", label: "TikTok" },
 ];
 
 const Navbar = () => {

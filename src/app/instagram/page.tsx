@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import WarningModal from "@/components/WarningModal";
 
 const services = [
   {
@@ -65,6 +66,7 @@ const services = [
 const page = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white px-4 py-12">
+      <WarningModal/>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
