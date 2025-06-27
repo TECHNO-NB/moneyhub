@@ -4,9 +4,13 @@ import { easeInOut, motion } from "framer-motion";
 import Review from "@/components/Reviw";
 import Image from "next/image";
 import PlatForms from "@/components/PlatForms";
+import { useEffect } from "react";
 // import WarningModal from "@/components/WarningModal";
 
 export default function Home() {
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
   return (
     <main className="relative min-h-screen bg-black overflow-hidden">
       {/* Top Gradient Blob */}

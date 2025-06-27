@@ -66,7 +66,7 @@ const services = [
     price: "Rs.80 / 1K",
     logo: "/tiktok-icon.png",
   },
-   {
+  {
     category: "Likes",
     title: "TikTok Likes",
     price: "Rs.150 / 2K",
@@ -140,8 +140,7 @@ export default function TikTokPage() {
           Grow Your TikTok 🚀
         </h1>
         <p className="text-center max-w-xl mt-4 text-gray-300">
-          Buy real TikTok views, likes, and followers to boost your account's
-          growth and engagement. Fast delivery and affordable pricing!
+          {`Buy real TikTok views, likes, and followers to boost your account's growth and engagement. Fast delivery and affordable pricing!`}
         </p>
       </motion.div>
 
