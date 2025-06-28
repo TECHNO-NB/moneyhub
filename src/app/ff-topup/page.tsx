@@ -1,7 +1,7 @@
 "use client";
 
 import TopUpRate from "@/components/FFTopUpRate";
-import WarningModal from "@/components/WarningModal";
+
 import { motion } from "framer-motion";
 
 import React from "react";
@@ -9,7 +9,6 @@ import React from "react";
 const page = () => {
   return (
     <main className="min-h-screen bg-white">
-      <WarningModal/>
       {/* FF TopUp Content */}
       <section className="max-w-4xl mx-auto px-4 py-20 text-center">
         <motion.h2
