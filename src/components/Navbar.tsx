@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import coin from "../../public/coin.webp";
 import Image from "next/image";
-import { Plus } from 'lucide-react';
+import { Plus } from "lucide-react";
 
 const navLinks = [
   { href: "/stake", label: "Stake" },
@@ -19,6 +19,7 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const [sikka, setSikka] = useState<number>(100);
 
   return (
     <>
@@ -28,7 +29,7 @@ const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <div className="max-w-7xl w-full mx-auto bg-black border-b px-4 py-4 flex justify-between items-center">
+        <div className=" w-full mx-auto bg-black  border-b px-4 md:px-[10rem] py-4 flex justify-between items-center ">
           {/* Brand */}
           <h1
             className="text-xl md:text-2xl font-bold text-yellow-400"
@@ -52,6 +53,14 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+          <motion.div className="hidden md:block sticky left-[100%] bg-black max-w-fit items-center border-2 justify-center text-center  p-2 rounded-[8px]">
+            <div className="div flex gap-1">
+              <Image src={coin} alt="coin" height={5} width={25} />
+
+              <p className=" text-yellow-300 ml-1   font-bold ">0</p>
+              <Plus className=" font-bold" width={30} />
+            </div>
+          </motion.div>
 
           {/* Hamburger Icon */}
           <div className="md:hidden">
@@ -97,13 +106,18 @@ const Navbar = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
-        <motion.div className=" sticky left-[100%] bg-black max-w-fit items-center border-l-1 border-b-1 border-r-1 justify-center text-center  p-2 rounded-[8px]">
-          <div className="div flex gap-1">
-            <Image src={coin} alt="coin" height={5} width={20} />
-            <p>Sikka</p>
-            <p className=" text-yellow-300 ml-1  font-bold ">0</p>
-            <Plus className=" font-bold" width={30}/>
+        {/* mobile show conin */}
+        {/* mobile show coin */}
+        <motion.div
+          className="md:hidden fixed top-17 right-3 z-[90] bg-black max-w-fit flex items-center border-2 border-t-0 rounded-[8px] shadow-lg p-2"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="flex gap-1 items-center">
+            <Image src={coin} alt="coin" height={20} width={25} />
+            <p className="text-yellow-300 ml-1 font-bold">{sikka}</p>
+            <Plus className="text-white" width={20} />
           </div>
         </motion.div>
       </motion.nav>
