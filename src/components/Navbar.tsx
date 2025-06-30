@@ -19,7 +19,7 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const [sikka, setSikka] = useState<number>(100);
+  const [sikka] = useState<number>(100);
 
   return (
     <>
