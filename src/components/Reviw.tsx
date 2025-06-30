@@ -46,13 +46,13 @@ export default function Review() {
         initial={{ scale: 0.5, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 2, ease: easeInOut }}
-        className="absolute w-96 h-56 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full blur-3xl opacity-40 top-48 left-36 z-0"
+        className="absolute w-96 h-56 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full blur-3xl opacity-40 top-48 left-36 md:left-[60%] z-0"
       ></motion.div>
        <motion.div
         initial={{ scale: 0.5, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 2, ease: easeInOut }}
-        className="absolute w-46 h-26 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full blur-3xl opacity-40 top-10 -left-10 z-0"
+        className="absolute w-46 h-26 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full blur-3xl opacity-40 top-10 -left-10 md:left-80 z-0"
       ></motion.div>
       <div className="w-full max-w-2xl">
         <h2 className="text-4xl font-bold text-center mb-10 text-yellow-400">
