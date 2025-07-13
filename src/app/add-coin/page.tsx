@@ -6,7 +6,7 @@ import { Download, ImagePlus, TriangleAlert } from "lucide-react";
 
 const Page: React.FC = () => {
   const fileRef = useRef<HTMLInputElement>(null);
-  const [setFile] = useState<File | null>(null);
+//   const [setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string>("");
 
   const handleClick = () => {
@@ -15,8 +15,7 @@ const Page: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement> | any) => {
     const file = e?.target?.files[0];
-    
-    if (file) {
+      if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result as string);
