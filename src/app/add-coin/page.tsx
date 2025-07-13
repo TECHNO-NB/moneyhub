@@ -13,8 +13,9 @@ const Page: React.FC = () => {
     fileRef.current?.click();
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement> | any) => {
-    const file = e?.target?.files[0];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e?.target?.files?.[0]
       if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
