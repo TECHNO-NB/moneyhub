@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import forex from "../../public/forex.png"
 
 const PlatForms = () => {
   return (
@@ -59,6 +60,17 @@ const PlatForms = () => {
                 width={120}
                 height={64}
                 className="h-16 object-contain"
+              />
+            </div>
+          </Link>
+          <Link href="/1xbet">
+            <div className="bg-white border-4 border-yellow-400 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-center items-center h-40">
+              <Image
+                src={forex}
+                alt="1xBet"
+                width={400}
+                height={300}
+                className="h object"
               />
             </div>
           </Link>

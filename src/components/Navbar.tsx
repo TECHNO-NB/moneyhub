@@ -55,9 +55,9 @@ const Navbar = () => {
           </ul>
           <motion.div className="hidden md:block sticky left-[100%] bg-black max-w-fit items-center border-2 justify-center text-center  p-2 rounded-[8px]">
             <div className="div flex gap-1">
-              <Image src={coin} alt="coin" height={5} width={25} />
+              <Image src={coin} alt="coin" height={5} width={25} className=" opacity-[0.9]" />
 
-              <p className=" text-yellow-300 ml-1   font-bold ">0</p>
+              <p className=" text-yellow-300 ml-1   font-bold ">{sikka}</p>
               <Plus className=" font-bold" width={30} />
             </div>
           </motion.div>
@@ -115,7 +115,7 @@ const Navbar = () => {
           transition={{ duration: 0.4 }}
         >
           <div className="flex gap-1 items-center">
-            <Image src={coin} alt="coin" height={20} width={25} />
+            <Image src={coin} alt="coin" height={20} className=" opacity-[0.8]" width={25} />
             <p className="text-yellow-300 ml-1 font-bold">{sikka}</p>
             <Plus className="text-white" width={20} />
           </div>

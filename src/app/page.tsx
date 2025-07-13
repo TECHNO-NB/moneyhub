@@ -35,10 +35,8 @@ export default function Home() {
             <span className="text-yellow-500">MoneyHub</span>
           </h2>
           <p className="text-white mb-6">
-            Join thousands of users making daily income through Stake, 1xbet.
-            Also Available: FF TopUp, TikTok Coin, Facebook, TikTok Like Views
-            and Followers, CapCut, Remini, PicArts, YouTube, and Netflix
-            Premium.
+            Join thousands of users earning daily income with MoneyHub. 
+            We also offer a variety of other services.
           </p>
           <a
             href="#earn"
