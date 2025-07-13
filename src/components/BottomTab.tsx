@@ -19,6 +19,10 @@ export default function BottomTab() {
     { name: "Profile", icon: <User />, key: "profile" },
   ];
 
+
+  
+  
+
   return (
     <div className="flex flex-col z-100 ">
       {/* Main content */}

@@ -23,14 +23,14 @@ export default function Home() {
       ></motion.div>
 
       {/* Hero Section */}
-      <section className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-4 md:py-20 gap-12">
+      <section className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-1 md:py-20 gap-12">
         <motion.div
           className="w-full md:w-1/2 text-center md:text-left"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-4xl md:text-5xl text-white font-bold leading-tight mb-2">
+          <h2 className="text-4xl md:text-5xl text-white font-bold leading-tight -mt-6">
             Get started to earn money with{" "}
             <span className="text-yellow-500">MoneyHub</span>
           </h2>
@@ -40,7 +40,7 @@ export default function Home() {
           </p>
           <a
             href="#earn"
-            className="inline-block bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition mb-4"
+            className="inline-block bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 transition mb-8"
           >
             Start Earning
           </a>

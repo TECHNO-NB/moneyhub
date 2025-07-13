@@ -3,11 +3,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname,useRouter} from "next/navigation";
 import { Menu, X } from "lucide-react";
 import coin from "../../public/coin.webp";
 import Image from "next/image";
 import { Plus } from "lucide-react";
+  
 
 const navLinks = [
   { href: "/stake", label: "Stake" },
@@ -19,7 +20,8 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const [sikka] = useState<number>(100);
+  const [sikka] = useState<number>(0);
+  const navigate= useRouter();
 
   return (
     <>
@@ -114,7 +116,7 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4 }}
         >
-          <div className="flex gap-1 items-center">
+          <div onClick={()=> navigate.push("/add-coin")} className="flex gap-1 items-center ">
             <Image src={coin} alt="coin" height={20} className=" opacity-[0.8]" width={25} />
             <p className="text-yellow-300 ml-1 font-bold">{sikka}</p>
             <Plus className="text-white" width={20} />
