@@ -1,9 +1,10 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import BottomTab from "@/components/BottomTab";
+
+import { usePathname } from "next/navigation";
+import LayoutShell from "@/components/LayoutShell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MoneyHub – Free Fire Top-Up, TikTok Followers, 1xBet Deposit in Nepal",
+  title:
+    "MoneyHub – Free Fire Top-Up, TikTok Followers, 1xBet Deposit in Nepal",
   description:
     "MoneyHub.store is Nepal's #1 platform to top-up Free Fire diamonds, buy TikTok & Instagram followers, and deposit in Stake/1xBet using eSewa, Khalti, or IME Pay.",
   keywords: [
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     "ff topup",
     "freefire topup nepal",
     "freefire topup",
-    "earning app"
+    "earning app",
   ],
   authors: [{ name: "MoneyHub Team" }],
   metadataBase: new URL("https://moneyhub.store"),
@@ -61,15 +63,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+ 
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <BottomTab/>
-        <Footer />
+      <LayoutShell>{children}</LayoutShell>
       </body>
     </html>
   );

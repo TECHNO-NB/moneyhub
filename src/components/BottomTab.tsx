@@ -8,17 +8,25 @@ import {
   ShoppingCart,
   User,
 } from "lucide-react"; // You can use any icons you want
+import { useRouter } from "next/navigation";
 
 export default function BottomTab() {
-  const [activeTab, setActiveTab] = useState("home");
+  const [activeTab, setActiveTab] = useState("/");
+  const router=useRouter();
 
   const tabs = [
-    { name: "Home", icon: <Home />, key: "home" },
+    { name: "Home", icon: <Home />, key: "/" },
     { name: "Wallet", icon: <Wallet />, key: "wallet" },
     { name: "Shop", icon: <ShoppingCart />, key: "shop" },
-    { name: "Profile", icon: <User />, key: "profile" },
+    { name: "Login", icon: <User />, key: "auth" },
   ];
 
+  const handleTabClick=(tab:any)=>{
+    setActiveTab(tab.key);
+    router.push(`/${tab.key}`)
+
+
+  }
 
   
   
@@ -33,7 +41,7 @@ export default function BottomTab() {
           {tabs.map((tab) => (
             <button
               key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => handleTabClick(tab)}
               className={`flex flex-col items-center justify-center flex-1 py-2 ${
                 activeTab === tab.key ? "text-blue-600" : "text-white"
               }`}

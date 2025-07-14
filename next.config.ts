@@ -17,7 +17,8 @@ const nextConfig: NextConfig = {
       "pngimg.com",
       "cdn1.iconfinder.com",
       "cdn1.iconfinder.com",
-      "www.bing.com"
+      "www.bing.com",
+      "www.freepnglogos.com"
     
     ],
   },
