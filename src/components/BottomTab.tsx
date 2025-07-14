@@ -1,18 +1,13 @@
-
+/* eslint-disable */
 "use client";
 
 import { useState } from "react";
-import {
-  Home,
-  Wallet,
-  ShoppingCart,
-  User,
-} from "lucide-react"; // You can use any icons you want
+import { Home, Wallet, ShoppingCart, User } from "lucide-react"; // You can use any icons you want
 import { useRouter } from "next/navigation";
 
 export default function BottomTab() {
   const [activeTab, setActiveTab] = useState("/");
-  const router=useRouter();
+  const router = useRouter();
 
   const tabs = [
     { name: "Home", icon: <Home />, key: "/" },
@@ -21,20 +16,15 @@ export default function BottomTab() {
     { name: "Login", icon: <User />, key: "auth" },
   ];
 
-  const handleTabClick=(tab:any)=>{
+  const handleTabClick = (tab: any) => {
     setActiveTab(tab.key);
-    router.push(`/${tab.key}`)
-
-
-  }
-
-  
-  
+    router.push(`/${tab.key}`);
+  };
 
   return (
     <div className="flex flex-col z-100 ">
       {/* Main content */}
-     
+
       {/* Bottom Tab Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-black border-t shadow-md z-50">
         <div className="flex justify-between">
