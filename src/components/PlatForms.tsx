@@ -70,7 +70,7 @@ const PlatForms = () => {
                 alt="1xBet"
                 width={500}
                 height={500}
-                className="h-20 object"
+                className="h-16 object"
               />
             </div>
           </Link>

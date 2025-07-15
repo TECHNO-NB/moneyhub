@@ -66,7 +66,7 @@ const Navbar = () => {
 
           {/* Hamburger Icon */}
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(true)}>
+            <button className=" cursor-pointer" onClick={() => setIsOpen(true)}>
               <Menu size={28} />
             </button>
           </div>
@@ -84,7 +84,7 @@ const Navbar = () => {
             >
               <div className="flex justify-between items-center mb-8">
                 <h2 className="text-xl font-bold text-yellow-400">Menu</h2>
-                <button onClick={() => setIsOpen(false)}>
+                <button className=" cursor-pointer" onClick={() => setIsOpen(false)}>
                   <X size={28} />
                 </button>
               </div>
