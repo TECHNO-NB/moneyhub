@@ -21,7 +21,7 @@ const RedeemCoin = () => {
   };
   return (
     <div className="flex  flex-col gap-6 w-full md:w-[40%] items-center justify-center">
-      <div className=" border-2   border-dashed border-zinc-600 rounded-lg w-full">
+      <div className=" border-2   border-dashed border-zinc-600 rounded-lg w-full overflow-hidden">
         <div className="div flex gap-2 items-center justify-center h-60 ">
           {preView && (
               <Image src={preView} width={180} height={150} alt="qr preview" className=" object-fill" />
