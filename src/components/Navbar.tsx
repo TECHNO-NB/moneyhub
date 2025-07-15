@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname,useRouter} from "next/navigation";
 import { Menu, X } from "lucide-react";
-import coin from "../../public/coin.webp";
+import coin from "../../public/moneyhublogo2.png";
 import Image from "next/image";
 import { Plus } from "lucide-react";
   
@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <>
       <motion.nav
-        className=" text-white  w-full sticky top-0 z-[100]"
+        className=" text-white bg-black  w-full sticky top-0 z-[100]"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -57,7 +57,7 @@ const Navbar = () => {
           </ul>
           <motion.div className="hidden md:block sticky left-[100%] bg-black max-w-fit items-center border-2 justify-center text-center  p-2 rounded-[8px]">
             <div className="div flex gap-1">
-              <Image src={coin} alt="coin" height={5} width={25} className=" opacity-[0.9]" />
+              <Image src={coin} alt="coin" height={5} width={25} className=" opacity-[1]" />
 
               <p className=" text-yellow-300 ml-1   font-bold ">{sikka}</p>
               <Plus className=" font-bold" width={30} />
@@ -117,7 +117,7 @@ const Navbar = () => {
           transition={{ duration: 0.4 }}
         >
           <div onClick={()=> navigate.push("/add-coin")} className="flex gap-1 cursor-pointer items-center ">
-            <Image src={coin} alt="coin" height={20} className=" opacity-[0.8]" width={25} />
+            <Image src={coin} alt="coin" height={20} className=" opacity-[1]" width={25} />
             <p className="text-yellow-300 ml-1 font-bold">{sikka}</p>
             <Plus className="text-white" width={20} />
           </div>

@@ -12,7 +12,7 @@ export default function Home() {
   window.scrollTo(0, 0);
 }, []);
   return (
-    <main className="relative min-h-screen bg-black overflow-hidden">
+    <main className="relative min-h-[90svh] bg-black overflow-hidden">
       {/* Top Gradient Blob */}
       {/* <WarningModal/> */}
       <motion.div
