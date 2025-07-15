@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { Home, Wallet, ShoppingCart, User } from "lucide-react"; // You can use any icons you want
 import { useRouter } from "next/navigation";
+import { motion, scale } from "framer-motion";
 
 export default function BottomTab() {
   const [activeTab, setActiveTab] = useState("/");
@@ -22,26 +23,31 @@ export default function BottomTab() {
   };
 
   return (
-    <div className="flex flex-col z-100 ">
-      {/* Main content */}
-
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="flex flex-col z-100 "
+    >
       {/* Bottom Tab Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-black border-t shadow-md z-50">
         <div className="flex justify-between">
-          {tabs.map((tab) => (
-            <button
+          {tabs.map((tab, index) => (
+            <motion.button
               key={tab.key}
+              initial={{ opacity: 0, x: -50, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: (index + 0.1) * 0.1 }}
               onClick={() => handleTabClick(tab)}
-              className={`flex flex-col items-center justify-center flex-1 py-2 ${
-                activeTab === tab.key ? "text-blue-600" : "text-white"
+              className={`flex flex-col items-center justify-center cursor-pointer  flex-1 py-2 ${
+                activeTab === tab.key ? "text-yellow-400" : "text-white"
               }`}
             >
               {tab.icon}
               <span className="text-sm">{tab.name}</span>
-            </button>
+            </motion.button>
           ))}
         </div>
       </nav>
-    </div>
+    </motion.div>
   );
 }

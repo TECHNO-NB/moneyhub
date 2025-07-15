@@ -68,9 +68,9 @@ const PlatForms = () => {
               <Image
                 src={forex}
                 alt="1xBet"
-                width={400}
-                height={300}
-                className="h object"
+                width={500}
+                height={500}
+                className="h-20 object"
               />
             </div>
           </Link>

@@ -13,7 +13,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
     <>
       {!hideLayout && <Navbar />}
       {children}
-      {!hideLayout && <BottomTab />}
+      {<BottomTab />}
       {!hideLayout && <Footer />}
     </>
   );
