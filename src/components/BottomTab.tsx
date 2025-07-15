@@ -29,7 +29,7 @@ export default function BottomTab() {
       className="flex flex-col z-100 "
     >
       {/* Bottom Tab Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-black border-t shadow-md z-50 md:w-[40%] md:items-center md:justify-center md:left-[30%]">
+      <nav className="fixed bottom-0 left-0 right-0 bg-black border-t shadow-md z-50 md:w-[40%] md:items-center md:justify-center md:left-[30%] md:rounded-4xl">
         <div className="flex justify-between">
           {tabs.map((tab, index) => (
             <motion.button

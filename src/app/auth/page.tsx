@@ -3,10 +3,12 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
   const handleGoogleLogin = () => {
-   
+    router.push("/profile");
   };
 
   return (
