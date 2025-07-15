@@ -5,6 +5,7 @@ import Review from "@/components/Reviw";
 import Image from "next/image";
 import PlatForms from "@/components/PlatForms";
 import { useEffect } from "react";
+import coinLogo from "../../public/moneyhublogo2.png"
 // import WarningModal from "@/components/WarningModal";
 
 export default function Home() {
