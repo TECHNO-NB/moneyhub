@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import LayoutShell from "@/components/LayoutShell";
+import { Toaster } from "react-hot-toast";
+import VerifyUser from "@/components/UserVerify";
 
 
 const geistSans = Geist({
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
     "freefire topup",
     "earning app",
     "trading",
-    "forex trading"
+    "forex trading",
   ],
   authors: [{ name: "MoneyHub Team" }],
   metadataBase: new URL("https://moneyhub.store"),
@@ -72,7 +74,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LayoutShell>{children}</LayoutShell>
+        
+          <LayoutShell>
+          <VerifyUser/>
+            {children}
+            <Toaster />
+          </LayoutShell>
+      
       </body>
     </html>
   );

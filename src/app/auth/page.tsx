@@ -1,14 +1,51 @@
 "use client";
-
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import { jwtDecode, JwtPayload } from "jwt-decode";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { addUser, userState } from "@/redux/userSlice";
+import { useState } from "react";
+import LoaderSpinner from "@/components/Loader";
 
 export default function LoginPage() {
   const router = useRouter();
-  const handleGoogleLogin = () => {
-    router.push("/profile");
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const handleGoogleLogin = async (token: JwtPayload) => {
+    try {
+      setIsLoading(true);
+      axios.defaults.withCredentials = true;
+      const login = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/sign-in`,
+        {
+          token,
+        }
+      );
+      if (login.data.status === 200 || login.data.status === 201) {
+        setIsLoading(false);
+        router.push("/profile");
+        toast.success("User signin successfully");
+
+        const userData: userState = {
+          id: login.data.data.id,
+          avatar: login.data.data.avatar,
+          fullName: login.data.data.fullName,
+          email: login.data.data.email,
+          balance: login.data.data.balance,
+          role: login.data.data.role,
+        };
+        dispatch(addUser(userData));
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Login failed");
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -18,6 +55,7 @@ export default function LoginPage() {
       transition={{ duration: 0.6, delay: 0.6 }}
       className="flex flex-col gap-6 -mt-28 min-h-screen justify-center items-center bg-neutral-950 px-4  "
     >
+      {isLoading ? <LoaderSpinner /> : null}
       <div className="div ">
         <motion.h1
           initial={{ opacity: 0, scale: 0.8 }}
@@ -50,18 +88,25 @@ export default function LoginPage() {
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
-          onClick={handleGoogleLogin}
-          className="flex w-full items-center justify-center gap-0 rounded-lg bg-black px-9 cursor-pointer py-3 text-sm font-medium text-white transition hover:bg-neutral-800"
+          className="flex w-full items-center justify-center gap-0 rounded-lg px-9 cursor-pointer py-3 text-sm font-medium text-white transition hover:bg-neutral-800"
         >
-          <Image
-            src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png"
-            alt="Google"
-            width={20}
-            height={20}
-            className="h-5 w-5"
-          />
-          <span className="flex-1 text-center">Continue with Google</span>
-          <ArrowRight className="h-4 w-4 text-white" />
+          {
+            <GoogleOAuthProvider
+              clientId={`${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`}
+            >
+              <GoogleLogin
+                width={230}
+                onSuccess={(credentialResponse: any) => {
+                  const jwtDetails = jwtDecode(credentialResponse.credential);
+
+                  handleGoogleLogin(jwtDetails);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              ></GoogleLogin>
+            </GoogleOAuthProvider>
+          }
         </motion.button>
 
         <p className="mt-6 text-center text-xs text-neutral-400">

@@ -4,17 +4,24 @@
 import { useState } from "react";
 import { Home, Wallet, ShoppingCart, User } from "lucide-react"; // You can use any icons you want
 import { useRouter } from "next/navigation";
-import { motion} from "framer-motion";
+import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import Image from "next/image";
 
 export default function BottomTab() {
   const [activeTab, setActiveTab] = useState("/");
   const router = useRouter();
+  const userData = useSelector((state: any) => state.user);
 
   const tabs = [
     { name: "Home", icon: <Home />, key: "/" },
     { name: "Wallet", icon: <Wallet />, key: "wallet" },
     { name: "Shop", icon: <ShoppingCart />, key: "shop" },
-    { name: "Login", icon: <User />, key: "auth" },
+    {
+      name: userData?.id ? "Profile" : "Login",
+      icon: <User />,
+      key: userData?.id ? "profile" : "auth",
+    },
   ];
 
   const handleTabClick = (tab: any) => {
@@ -42,7 +49,17 @@ export default function BottomTab() {
                 activeTab === tab.key ? "text-yellow-400" : "text-white"
               }`}
             >
-              {tab.icon}
+              {tab.key === "profile" && userData?.avatar ? (
+                <Image
+                  src={userData.avatar}
+                  alt="user avatar"
+                  height={23}
+                  width={23}
+                  className="rounded-full"
+                />
+              ) : (
+                tab.icon
+              )}
               <span className="text-sm">{tab.name}</span>
             </motion.button>
           ))}

@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 import coin from "../../public/moneyhublogo2.png";
 import Image from "next/image";
 import { Plus } from "lucide-react";
+import { useSelector } from "react-redux";
   
 
 const navLinks = [
@@ -19,8 +20,9 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const userData=useSelector((state:any)=> state.user);
   const pathname = usePathname();
-  const [sikka] = useState<number>(0);
+ 
   const navigate= useRouter();
 
   return (
@@ -59,7 +61,7 @@ const Navbar = () => {
             <div className="div flex gap-1">
               <Image src={coin} alt="coin" height={5} width={25} className=" opacity-[1]" />
 
-              <p className=" text-yellow-300 ml-1   font-bold ">{sikka}</p>
+              <p className=" text-yellow-300 ml-1   font-bold ">{userData.id ? userData.balance : 0}</p>
               <Plus className=" font-bold" width={30} />
             </div>
           </motion.div>
@@ -118,7 +120,7 @@ const Navbar = () => {
         >
           <div onClick={()=> navigate.push("/add-coin")} className="flex gap-1 cursor-pointer items-center ">
             <Image src={coin} alt="coin" height={20} className=" opacity-[1]" width={25} />
-            <p className="text-yellow-300 ml-1 font-bold">{sikka}</p>
+            <p className="text-yellow-300 ml-1 font-bold">{userData.id ? userData.balance : 0}</p>
             <Plus className="text-white" width={20} />
           </div>
         </motion.div>
