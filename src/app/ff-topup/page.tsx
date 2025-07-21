@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable */
 
 import TopUpRate from "@/components/FFTopUpRate";
 

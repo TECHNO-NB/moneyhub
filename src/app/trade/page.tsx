@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable */
+
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 

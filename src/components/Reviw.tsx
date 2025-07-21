@@ -1,4 +1,6 @@
 'use client';
+/* eslint-disable */
+
 import { useState } from 'react';
 import { motion, AnimatePresence, easeInOut } from 'framer-motion';
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';

@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable */
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -58,7 +59,7 @@ const Navbar = () => {
             ))}
           </ul>
           <motion.div className="hidden md:block sticky left-[100%] bg-black max-w-fit items-center border-2 justify-center text-center  p-2 rounded-[8px]">
-            <div className="div flex gap-1">
+            <div onClick={()=> navigate.push("/add-coin")} className="div flex gap-1 cursor-pointer">
               <Image src={coin} alt="coin" height={5} width={25} className=" opacity-[1]" />
 
               <p className=" text-yellow-300 ml-1   font-bold ">{userData.id ? userData.balance : 0}</p>

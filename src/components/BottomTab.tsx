@@ -1,32 +1,36 @@
 /* eslint-disable */
 "use client";
 
+
 import { useState } from "react";
-import { Home, Wallet, ShoppingCart, User } from "lucide-react"; // You can use any icons you want
-import { useRouter } from "next/navigation";
+import { Home, Wallet, User } from "lucide-react"; // You can use any icons you want
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import Image from "next/image";
+import { Bell } from 'lucide-react';
 
 export default function BottomTab() {
-  const [activeTab, setActiveTab] = useState("/");
+  const [activetab,setActiveTab] = useState("/");
   const router = useRouter();
+  const pathName = usePathname();
+
   const userData = useSelector((state: any) => state.user);
 
   const tabs = [
     { name: "Home", icon: <Home />, key: "/" },
-    { name: "Wallet", icon: <Wallet />, key: "wallet" },
-    { name: "Shop", icon: <ShoppingCart />, key: "shop" },
+    { name: "Wallet", icon: <Wallet />, key: "/wallet" },
+    { name: "Notification", icon: <Bell />, key: "/notification" },
     {
       name: userData?.id ? "Profile" : "Login",
       icon: <User />,
-      key: userData?.id ? "profile" : "auth",
+      key: userData?.id ? "/profile" : "/auth",
     },
   ];
 
   const handleTabClick = (tab: any) => {
     setActiveTab(tab.key);
-    router.push(`/${tab.key}`);
+    router.push(`${tab.key}`);
   };
 
   return (
@@ -46,10 +50,10 @@ export default function BottomTab() {
               transition={{ duration: 0.6, delay: (index + 0.1) * 0.1 }}
               onClick={() => handleTabClick(tab)}
               className={`flex flex-col items-center justify-center cursor-pointer  flex-1 py-2 ${
-                activeTab === tab.key ? "text-yellow-400" : "text-white"
+                pathName === tab.key ? "text-yellow-400" : "text-white"
               }`}
             >
-              {tab.key === "profile" && userData?.avatar ? (
+              {tab.key === "/profile" && userData?.avatar ? (
                 <Image
                   src={userData.avatar}
                   alt="user avatar"

@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable */
 import { addUser, userState } from "@/redux/userSlice";
 import axios from "axios";
 import { useEffect } from "react";

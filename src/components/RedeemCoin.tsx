@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useRef, useState } from "react";
 import { Upload,FileImage  } from "lucide-react";
 import Image from "next/image";

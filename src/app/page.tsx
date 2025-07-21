@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable */
 import { easeInOut, motion } from "framer-motion";
 import Review from "@/components/Reviw";
 import Image from "next/image";

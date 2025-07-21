@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable */
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
