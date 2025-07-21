@@ -9,10 +9,10 @@ export default function VerifyUser() {
   const dispatch = useDispatch();
   const userData = useSelector((state: any) => state.user);
   useEffect(() => {
-    axios.defaults.withCredentials = true;
     const fetchUser = async () => {
       if (!userData || !userData.id) {
         try {
+          axios.defaults.withCredentials = true;
           const res = await axios.post(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/verify-user`
           );
