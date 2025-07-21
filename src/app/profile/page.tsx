@@ -96,7 +96,7 @@ export default function ProfilePage() {
             <div className="flex gap-4">
               <div className="flex items-center gap-2 px-4 py-2 bg-zinc-900 rounded-xl border border-zinc-700">
                 <Wallet className="h-5 w-5 text-green-400" />
-                <span className="text-white">$1,250</span>
+                <span className="text-white">$0</span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-zinc-900 rounded-xl border border-zinc-700">
                 <Image src={coin} height={19} alt="coin image" />
