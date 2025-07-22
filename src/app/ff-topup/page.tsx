@@ -11,7 +11,7 @@ const page = () => {
   return (
     <main className="min-h-screen bg-white">
       {/* FF TopUp Content */}
-      <section className="max-w-4xl mx-auto px-4 py-10 text-center">
+      {/* <section className="max-w-4xl mx-auto px-4 py-10 text-center">
         <motion.h2
           className="text-4xl font-bold text-gray-800 mb-6"
           initial={{ x: -100, opacity: 0 }}
@@ -48,7 +48,7 @@ const page = () => {
         >
           Start Top-Up Now
         </motion.a>
-      </section>
+      </section> */}
 
       <section>
         <TopUpRate />

@@ -64,7 +64,7 @@ export default function TopUpRate() {
           const res = await axios.post(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/fforder/buy-diamond`,
             {
-              ffUid: ffUid,
+              ffUid: Number(ffUid),
               ffName: ffName,
               diamondPrice: selectedCardData.price,
               diamondTitle: selectedCardData.diamonds,
