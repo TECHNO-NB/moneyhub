@@ -15,21 +15,21 @@ export function middleware(req: NextRequest) {
   const isAuthRoute = req.nextUrl.pathname.startsWith("/auth");
   const isProtectedRoute = req.nextUrl.pathname.startsWith("/profile");
 
-  const isAccessTokenValid = (() => {
-    if (!accessToken) return false;
-    try {
-      const decoded: JwtPayload = jwtDecode(accessToken);
-      return decoded.exp * 1000 > Date.now(); // check expiry
-    } catch (err) {
-      return false;
-    }
-  })();
+  // const isAccessTokenValid = (() => {
+  //   if (!accessToken) return false;
+  //   try {
+  //     const decoded: JwtPayload = jwtDecode(accessToken);
+  //     return decoded.exp * 1000 > Date.now(); // check expiry
+  //   } catch (err) {
+  //     return false;
+  //   }
+  // })();
 
-  if (isProtectedRoute && (!accessToken || !refreshToken || !isAccessTokenValid)) {
+  if (isProtectedRoute && (!accessToken || !refreshToken )) {
     return NextResponse.redirect(new URL("/auth", req.url));
   }
 
-  if (isAuthRoute && accessToken && refreshToken && isAccessTokenValid) {
+  if (isAuthRoute && accessToken && refreshToken ) {
     return NextResponse.redirect(new URL("/profile", req.url));
   }
 
