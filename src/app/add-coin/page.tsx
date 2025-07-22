@@ -7,6 +7,7 @@ import { Download, ImagePlus, Loader, TriangleAlert } from "lucide-react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import esewaqr from "../../../public/esewa-qr.jpg"
 
 const Page: React.FC = () => {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -81,6 +82,15 @@ const Page: React.FC = () => {
     }
   }, [file, amount]);
 
+   const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = esewaqr.src; 
+    link.download = "esewaqr.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen w-full bg-[#0e0e0e] text-white flex flex-col items-center justify-center p-4 md:p-10 gap-6">
       {/* QR Instructions */}
@@ -106,7 +116,7 @@ const Page: React.FC = () => {
       <div className="w-full md:w-[40%] bg-[#1a1a1a] border border-gray-700 rounded-2xl p-4 flex justify-center shadow-md">
         <Image
           alt="QR Code"
-          src="https://www.bing.com/th/id/OIP.ufLMWTZgKfXePoS2TERVjwHaHa?w=204&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+          src={esewaqr}
           height={200}
           width={200}
           className="rounded-lg"
@@ -114,7 +124,7 @@ const Page: React.FC = () => {
       </div>
 
       {/* Download QR Button */}
-      <button className="w-full md:w-[40%] bg-red-600 hover:bg-red-700 transition-all py-3 rounded-xl flex items-center justify-center gap-2 font-semibold text-white shadow">
+      <button onClick={handleDownload} className="w-full md:w-[40%] bg-red-600 hover:bg-red-700 transition-all py-3 rounded-xl flex items-center justify-center gap-2 font-semibold text-white shadow">
         <Download size={20} /> Download QR
       </button>
 
