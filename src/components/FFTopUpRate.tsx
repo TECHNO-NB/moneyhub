@@ -24,7 +24,7 @@ const topUpOptions = [
 
 export default function TopUpRate() {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
-  const [ffUid, setFfUid] = useState("");
+  const [ffUid, setFfUid] = useState<string>("");
   const [ffName, setFfName] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -64,7 +64,7 @@ export default function TopUpRate() {
           const res = await axios.post(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/fforder/buy-diamond`,
             {
-              ffUid: Number(ffUid),
+              ffUid: ffUid,
               ffName: ffName,
               diamondPrice: selectedCardData.price,
               diamondTitle: selectedCardData.diamonds,
