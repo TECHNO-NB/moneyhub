@@ -6,15 +6,17 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser, userState } from "@/redux/userSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoaderSpinner from "@/components/Loader";
 
 export default function LoginPage() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const userData = useSelector((state: any) => state.user);
+
   const handleGoogleLogin = async (token: JwtPayload) => {
     try {
       setIsLoading(true);
@@ -48,6 +50,11 @@ export default function LoginPage() {
       setIsLoading(false);
     }
   };
+  useEffect(() => {
+    if (userData.id && userData) {
+      router.push("/profile");
+    }
+  }, [dispatch, userData]);
 
   return (
     <motion.div

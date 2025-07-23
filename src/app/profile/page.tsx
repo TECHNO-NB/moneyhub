@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import {
   LogOut,
@@ -21,7 +21,7 @@ import coin from "../../../public/moneyhublogo2.png";
 import { addUser, userState } from "@/redux/userSlice";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import LoaderSpinner from "@/components/Loader";
 
 const tabs = [
@@ -70,6 +70,18 @@ export default function ProfilePage() {
       setIsLoading(false);
     }
   };
+
+   const protectedRoutes = ["/profile"];
+   const pathname=usePathname();
+
+  useEffect(() => {
+    if (protectedRoutes.includes(pathname)) {
+      if (!userData || !userData.id) {
+        router.push("/auth");
+      }
+    }
+  }, [pathname, userData]);
+  
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-black to-zinc-900 text-white p-4 sm:p-8">
