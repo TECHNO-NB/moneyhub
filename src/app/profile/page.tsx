@@ -71,8 +71,8 @@ export default function ProfilePage() {
     }
   };
 
-   const protectedRoutes = ["/profile"];
-   const pathname=usePathname();
+  const protectedRoutes = ["/profile"];
+  const pathname = usePathname();
 
   useEffect(() => {
     if (protectedRoutes.includes(pathname)) {
@@ -81,7 +81,6 @@ export default function ProfilePage() {
       }
     }
   }, [pathname, userData]);
-  
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-black to-zinc-900 text-white p-4 sm:p-8">
@@ -272,9 +271,9 @@ export default function ProfilePage() {
             <div>
               <h2 className="text-xl font-semibold mb-4">About Us</h2>
               <p className="text-gray-300">
-                Welcome to Money Hub – your trusted destination for safe
-                and affordable digital service top-ups. We provide a seamless
-                way for users to top up Free Fire diamonds, and purchase likes,
+                Welcome to Money Hub – your trusted destination for safe and
+                affordable digital service top-ups. We provide a seamless way
+                for users to top up Free Fire diamonds, and purchase likes,
                 views, and followers for platforms like TikTok and Instagram,
                 all through our unique coin-based system. Simply deposit funds
                 to our verified bank account, and once verified, you’ll receive
@@ -291,12 +290,90 @@ export default function ProfilePage() {
 
           {activeTab === "Support" && (
             <div>
-              <h2 className="text-xl font-semibold mb-4">Support</h2>
-              <p className="text-gray-300">Need help? Reach us anytime.</p>
-              <ul className="mt-3 space-y-2 text-gray-300">
-                <li>📧 Email: bhattarain538@gmail.com</li>
-                <li>📞 Phone: +977 9869991666</li>
-                <li>🌐 Website Chat: Available 24/7</li>
+              <h2 className="text-xl font-semibold mb-4 text-white">Support</h2>
+              <p className="text-gray-300">Need help? Reach us anytime. (click to messgae)</p>
+              <ul className="mt-3 space-y-4 text-gray-300">
+                {/* Gmail */}
+                <li className="flex items-center space-x-3">
+                  <div className="bg-red-600 p-2 rounded-full">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 text-white"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z" />
+                    </svg>
+                  </div>
+                  <span>
+                    Email:{" "}
+                    <a
+                      href="mailto:bhattarain538@gmail.com"
+                      className="text-blue-400 hover:underline"
+                    >
+                      Message me on Email
+                    </a>
+                  </span>
+                </li>
+
+                {/* Phone */}
+                <li className="flex items-center space-x-3">
+                  <div className="bg-gray-700 p-2 rounded-full">
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 5a2 2 0 012-2h2.586a1 1 0 01.707.293l1.414 1.414A1 1 0 0011.414 5H13a2 2 0 012 2v2a1 1 0 01-.293.707L13.293 11a1 1 0 000 1.414l3 3a1 1 0 01.293.707V19a2 2 0 01-2 2h-2c-.265 0-.52-.105-.707-.293l-1.414-1.414A1 1 0 0011 19H9a2 2 0 01-2-2v-2a1 1 0 01.293-.707l3-3A1 1 0 0010 11H8a2 2 0 01-2-2V7a1 1 0 01.293-.707L8.586 4.586A1 1 0 009.293 4H11a2 2 0 012 2v2a1 1 0 01-.293.707L11.414 9H10a1 1 0 00-.707.293l-3 3A1 1 0 006 13v2a2 2 0 01-2 2H3a2 2 0 01-2-2V7a2 2 0 012-2Z"
+                      />
+                    </svg>
+                  </div>
+                  <span>
+                    Phone:{" "}
+                    <a
+                      href="tel:+9779869991666"
+                      className="text-blue-400 hover:underline"
+                    >
+                      +977 9869334536
+                    </a>
+                  </span>
+                </li>
+
+                {/* WhatsApp */}
+                <li className="flex items-center space-x-3">
+                  <div className="bg-green-500 p-2 rounded-full">
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M20.52 3.48A11.78 11.78 0 0012 0a11.8 11.8 0 00-10 18.12L0 24l6.12-2A11.8 11.8 0 0012 24a11.79 11.79 0 008.48-20.52Zm-8.48 18A9.89 9.89 0 013.64 18l-.24-.14L2 22l3.9-1.36.13-.07A9.89 9.89 0 0112 21.48a9.86 9.86 0 000-19.72A9.86 9.86 0 003.64 18Zm5.27-7.14c-.09-.15-.34-.25-.72-.44s-2.1-1.03-2.42-1.15-.57-.18-.81.18-.93 1.15-1.14 1.39-.42.27-.78.09a6.92 6.92 0 01-2.1-1.85A7.93 7.93 0 017.1 9.6c.07-.2.02-.42-.06-.6s-.81-1.95-.92-2.13-.22-.48-.44-.48-.57 0-.87.42-.8.78-.8 1.89.82 2.2.93 2.35 1.62 2.63 3.93 3.68a13.69 13.69 0 001.43.53c.6.19 1.15.18 1.58.11s.48-.15.69-.39.66-.78.84-1.05.3-.48.18-.72Z" />
+                    </svg>
+                  </div>
+                  <span>
+                    WhatsApp:{" "}
+                    <a
+                      href="https://wa.me/9779869436906"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-300 hover:underline"
+                    >
+                      Chat on WhatsApp
+                    </a>
+                  </span>
+                </li>
+
+                {/* Website Chat */}
+                <li className="flex items-center space-x-3">
+                  <div className="bg-blue-500 p-2 rounded-full">🌐</div>
+                  <span>Website Chat: Available 24/7 <span className=" bg-red-600 rounded-full p-2 font-bold">!Coming soon</span></span>
+                </li>
               </ul>
             </div>
           )}

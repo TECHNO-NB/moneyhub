@@ -87,8 +87,8 @@ const Page = () => {
   };
 
   return (
-    <div className="max-w-screen min-h-svh bg-gradient-to-b from-gray-900 via-gray-800 to-black px-6 mt-8 md:p-6 md:mt-0">
-      <div className="bg-gray-800 border border-gray-700 px-4 py-3 rounded-2xl shadow-lg flex items-center justify-between">
+    <div className="max-w-screen min-h-svh bg-gradient-to-b from-gray-900 via-gray-800 to-black px-6 py-6 md:p-6 md:mt-0">
+      <div className="  border border-gray-700 px-4 py-3 rounded-2xl shadow-lg flex items-center justify-between">
         <h1 className="text-yellow-400 text-2xl font-bold tracking-wide">
           Notifications
         </h1>

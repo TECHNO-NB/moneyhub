@@ -8,7 +8,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import { Bell } from 'lucide-react';
+import { Bell,Gamepad2  } from 'lucide-react';
+
 
 export default function BottomTab() {
   const [activetab,setActiveTab] = useState("/");
@@ -19,7 +20,7 @@ export default function BottomTab() {
 
   const tabs = [
     { name: "Home", icon: <Home />, key: "/" },
-    { name: "Wallet", icon: <Wallet />, key: "/wallet" },
+    { name: "Games", icon: <Gamepad2 />, key: "/games" },
     { name: "Notification", icon: <Bell />, key: "/notification" },
     {
       name: userData?.id ? "Profile" : "Login",
