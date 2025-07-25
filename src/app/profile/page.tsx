@@ -291,7 +291,7 @@ export default function ProfilePage() {
           {activeTab === "Support" && (
             <div>
               <h2 className="text-xl font-semibold mb-4 text-white">Support</h2>
-              <p className="text-gray-300">Need help? Reach us anytime. (click to messgae)</p>
+              <p className="text-gray-300">Need help? Reach us anytime. (click to message and call)</p>
               <ul className="mt-3 space-y-4 text-gray-300">
                 {/* Gmail */}
                 <li className="flex items-center space-x-3">
@@ -340,7 +340,7 @@ export default function ProfilePage() {
                       href="tel:+9779869991666"
                       className="text-blue-400 hover:underline"
                     >
-                      +977 9869334536
+                      Call me
                     </a>
                   </span>
                 </li>
@@ -372,7 +372,7 @@ export default function ProfilePage() {
                 {/* Website Chat */}
                 <li className="flex items-center space-x-3">
                   <div className="bg-blue-500 p-2 rounded-full">🌐</div>
-                  <span>Website Chat: Available 24/7 <span className=" bg-red-600 rounded-full p-2 font-bold">!Coming soon</span></span>
+                  <span>Website Chat: Available 24/7 <span className=" bg-red-600 rounded-full p-2 font-bold"> !Coming soon</span></span>
                 </li>
               </ul>
             </div>
