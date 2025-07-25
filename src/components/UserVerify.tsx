@@ -45,11 +45,11 @@ export default function VerifyUser() {
     fetchUser();
   }, []);
 
-  return (
-    <div className="fixed inset-0 z-50  flex items-center justify-center">
-      {isLoading ? (
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 z-50  flex items-center justify-center">
         <Loader color="yellow" size={50} className=" animate-spin" />
-      ) : null}
-    </div>
-  );
+      </div>
+    );
+  }
 }
