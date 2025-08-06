@@ -1,26 +1,12 @@
 "use client";
 /* eslint-disable */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CircleCheck, Loader, X } from "lucide-react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-
-const topUpOptions = [
-  { index: 0, diamonds: 50, price: 60 },
-  { index: 1, diamonds: 115, price: 120 },
-  { index: 2, diamonds: 240, price: 250 },
-  { index: 3, diamonds: 610, price: 600 },
-  { index: 4, diamonds: 1090, price: 1050 },
-  { index: 5, diamonds: 1240, price: 1140 },
-  { index: 6, diamonds: 2530, price: 2300 },
-  { index: 7, diamonds: 5060, price: 4500 },
-  { index: 8, diamonds: "All Level Up Pass", price: 600 },
-  { index: 9, diamonds: "Weekly Membership", price: 250 },
-  { index: 10, diamonds: "Monthly Membership", price: 1100 },
-];
 
 export default function TopUpRate() {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
@@ -29,10 +15,23 @@ export default function TopUpRate() {
   const [modalOpen, setModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const userData = useSelector((state: any) => state.user);
+  const [topUpOptions, setTopUpOptions] = useState<any[]>([]);
 
+  useEffect(() => {
+    const getFfTopUpList = async () => {
+      try {
+        const getList=await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/get-topup-list`);
+        
+        setTopUpOptions(getList.data.data);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+    getFfTopUpList();
+  }, []);
   const router = useRouter();
   const selectedCardData = topUpOptions.find(
-    (data) => data.index === selectedCard
+    (data) => data.id === selectedCard
   );
 
   // Message for WhatsApp (full)
@@ -67,7 +66,7 @@ export default function TopUpRate() {
               ffUid: ffUid,
               ffName: ffName,
               diamondPrice: selectedCardData.price,
-              diamondTitle: selectedCardData.diamonds,
+              diamondTitle: selectedCardData.diamondTitle,
             }
           );
           if (res) {
@@ -102,24 +101,27 @@ export default function TopUpRate() {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
-        {topUpOptions.map(({ index, diamonds, price }) => (
+        {topUpOptions.map(({ id, diamondTitle, price, realPrice }) => (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            key={diamonds}
-            onClick={() => openModal(index)}
+            transition={{ duration: 0.5, delay: id * 0.1 }}
+            key={id}
+            onClick={() => openModal(id)}
             className={`bg-white rounded-2xl shadow-lg p-4 hover:scale-105 transition-transform cursor-pointer ${
-              selectedCard === index ? "border-green-600 border-2" : ""
+              selectedCard === id ? "border-green-600 border-2" : ""
             }`}
           >
             <div className="text-xl font-semibold text-yellow-700">
-              💎 {diamonds}
+              💎 {diamondTitle}
             </div>
             <div className="flex justify-between">
-              <div className="text-gray-600 text-sm mt-1">Rs. {price}</div>
-              {selectedCard === index ? <CircleCheck color="green" /> : null}
+              <div className="text-gray-600 text-sm mt-1 flex gap-1">
+                <p>Rs. {price}</p>{" "}
+                <span className=" line-through text-gray-400">{realPrice}</span>
+              </div>
+              {selectedCard === id ? <CircleCheck color="green" /> : null}
             </div>
           </motion.div>
         ))}
@@ -174,7 +176,7 @@ export default function TopUpRate() {
 
             <div className="text-center mb-6">
               <span className="text-3xl font-bold text-yellow-400">
-                💎 {selectedCardData.diamonds}
+                💎 {selectedCardData.diamondTitle}
               </span>
               <p className="text-lg mt-1">Rs. {selectedCardData.price}</p>
             </div>

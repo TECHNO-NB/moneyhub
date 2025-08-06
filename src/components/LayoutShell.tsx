@@ -10,6 +10,8 @@ import { Provider } from "react-redux";
 import { store } from "@/redux/store";
 import NProgress from "nprogress";
 import { useEffect } from "react";
+import { generateToken } from "./FireBaseNotification";
+import { getMessaging, onMessage } from "firebase/messaging";
 
 NProgress.configure({ showSpinner: false });
 export default function LayoutShell({
@@ -24,6 +26,12 @@ export default function LayoutShell({
     NProgress.start();
     NProgress.done();
   }, [pathname]);
+
+  useEffect(()=>{
+    generateToken();
+   
+    
+  },[])
 
   return (
     <>
