@@ -14,17 +14,25 @@ export default function TopUpRate() {
   const [ffName, setFfName] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRateLoad, setIsRateLoad] = useState(false);
   const userData = useSelector((state: any) => state.user);
   const [topUpOptions, setTopUpOptions] = useState<any[]>([]);
 
   useEffect(() => {
     const getFfTopUpList = async () => {
       try {
-        const getList=await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/get-topup-list`);
-        
+        setIsRateLoad(true);
+        const getList = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/get-topup-list`
+        );
+
+        setIsRateLoad(false);
         setTopUpOptions(getList.data.data);
       } catch (error) {
-        console.log(error)
+        setIsRateLoad(false);
+        console.log(error);
+      } finally {
+        setIsRateLoad(false);
       }
     };
     getFfTopUpList();
@@ -99,7 +107,11 @@ export default function TopUpRate() {
         </p>
         <p className="text-sm text-gray-500">Time: 06:30 - 12:30</p>
       </div>
-
+      {isRateLoad ? (
+        <div className="w-[100vw] fixed inset-0  flex justify-center items-center text-center">
+          <Loader className="w-12 h-12 text-red-400 animate-spin" />
+        </div>
+      ) : null}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
         {topUpOptions.map(({ id, diamondTitle, price, realPrice }) => (
           <motion.div
