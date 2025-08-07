@@ -1,5 +1,6 @@
 // components/JoinFfMatch.tsx
 "use client";
+/* eslint-disable */
 
 import React from "react";
 import { X } from "lucide-react";

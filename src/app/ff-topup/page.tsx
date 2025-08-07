@@ -3,7 +3,7 @@
 
 import TopUpRate from "@/components/FFTopUpRate";
 
-import { motion } from "framer-motion";
+
 
 import React from "react";
 

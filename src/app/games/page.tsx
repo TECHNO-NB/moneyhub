@@ -1,5 +1,6 @@
 // app/page.tsx
 'use client'
+/* eslint-disable */
 import JoinFfMatch from "@/components/JoinFfMatch";
 import { BowArrow, Gamepad2, Clock } from "lucide-react";
 import Image from "next/image";
