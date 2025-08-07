@@ -1,18 +1,15 @@
 /* eslint-disable */
 "use client";
 
-
 import { useState } from "react";
-import { Home, Wallet, User } from "lucide-react"; // You can use any icons you want
+import { Home, User, Bell, Gamepad2, Store } from "lucide-react"; // You can use any icons you want
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import { Bell,Gamepad2  } from 'lucide-react';
-
 
 export default function BottomTab() {
-  const [activetab,setActiveTab] = useState("/");
+  const [activetab, setActiveTab] = useState("/");
   const router = useRouter();
   const pathName = usePathname();
 
@@ -20,6 +17,7 @@ export default function BottomTab() {
 
   const tabs = [
     { name: "Home", icon: <Home />, key: "/" },
+    { name: "Store", icon: <Store />, key: "/store" },
     { name: "Games", icon: <Gamepad2 />, key: "/games" },
     { name: "Notification", icon: <Bell />, key: "/notification" },
     {

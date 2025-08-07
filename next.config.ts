@@ -20,8 +20,10 @@ const nextConfig: NextConfig = {
       "www.bing.com",
       "www.freepnglogos.com",
       "lh3.googleusercontent.com",
-     
-    
+      "thfvnext.bing.com",
+      "cdn.pixabay.com",
+      "cdn.pixabay.com",
+      "cdn.vectorstock.com"
     ],
   },
 };
