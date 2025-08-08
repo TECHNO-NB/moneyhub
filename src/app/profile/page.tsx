@@ -23,6 +23,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { usePathname, useRouter } from "next/navigation";
 import LoaderSpinner from "@/components/Loader";
+import Link from "next/link";
 
 const tabs = [
   { label: "Personal Details", icon: User },
@@ -372,7 +373,7 @@ export default function ProfilePage() {
                 {/* Website Chat */}
                 <li className="flex items-center space-x-3">
                   <div className="bg-blue-500 p-2 rounded-full">🌐</div>
-                  <span>Website Chat: Available 24/7 <span className=" bg-red-600 rounded-full p-2 font-bold"> !Coming soon</span></span>
+                 <Link href="/chatwithadmin"><span>Website Chat: Available 24/7 <span className=" bg-red-600 rounded-full p-2 font-bold"> !Coming soon</span></span></Link> 
                 </li>
               </ul>
             </div>

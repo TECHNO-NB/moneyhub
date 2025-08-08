@@ -28,8 +28,8 @@ const JoinFfMatch = ({ match, onClose }: Props) => {
             />
             {match.title}
           </h2>
-          <button onClick={onClose}>
-            <X className="text-white hover:text-red-500" />
+          <button className=" cursor-pointer" onClick={onClose}>
+            <X size={40} className="text-white hover:text-red-500" />
           </button>
         </div>
 
@@ -72,7 +72,20 @@ const JoinFfMatch = ({ match, onClose }: Props) => {
           </div>
         </div>
 
+        <div className="relative w-full mt-2 mb-2">
+          <label className="absolute -top-2 left-4 bg-[#1a1a1a] px-1 text-sm text-gray-300">
+            Freefire Game Name
+          </label>
+          <input
+            type="text"
+            placeholder="gamingx3"
+            className="w-full px-5 py-3 rounded-xl border-2 border-gray-700 bg-transparent text-white placeholder-gray-500 
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
+              transition duration-300 ease-in-out"
+          />
+        </div>
         {/* Join Button */}
+
         <button className="mt-2 cursor-pointer mb-12 w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-bold">
           Confirm Join
         </button>

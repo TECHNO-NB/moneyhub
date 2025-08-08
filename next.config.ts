@@ -23,7 +23,8 @@ const nextConfig: NextConfig = {
       "thfvnext.bing.com",
       "cdn.pixabay.com",
       "cdn.pixabay.com",
-      "cdn.vectorstock.com"
+      "cdn.vectorstock.com",
+      "wallpapers.com"
     ],
   },
 };
