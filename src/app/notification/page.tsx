@@ -45,8 +45,15 @@ const Page = () => {
           createdAt: item.updatedAt,
         })
       );
+      const tournamentEnterNotications: Notification[] =(res.data.data.tournament ||  []).map(
+        (item: any) => ({
+          message: item.message || "Free Fire tourament update",
+          status: item.status,
+          createdAt: item.updatedAt,
+        })
+      );
 
-      const merged = [...loadNotifications, ...ffNotifications].sort(
+      const merged = [...loadNotifications, ...ffNotifications,...tournamentEnterNotications].sort(
         (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
 

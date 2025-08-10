@@ -3,9 +3,12 @@
 /* eslint-disable */
 
 import React, { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { Loader, X } from "lucide-react";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 type Props = {
   match: any;
@@ -14,6 +17,11 @@ type Props = {
 
 const JoinFfMatch = ({ match, onClose }: Props) => {
   const [time, setTime] = useState("");
+  const [gameName, setGameName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const user = useSelector((state: any) => state.user);
+  const router = useRouter();
+
   if (!match) {
     return;
   }
@@ -28,12 +36,47 @@ const JoinFfMatch = ({ match, onClose }: Props) => {
       hour12: true,
     });
     setTime(formatted);
-
   };
-  useEffect(()=>{
+  useEffect(() => {
     handleDate();
-  },[match.time])
-  
+  }, [match.time]);
+
+  const handleTournament = async () => {
+    setIsLoading(true);
+    if (!gameName) {
+      toast.error("Please enter your ff game name");
+      setIsLoading(false);
+      return;
+    }
+
+    if (user.balance < match.cost) {
+      router.push("/add-coin");
+      setIsLoading(false);
+      toast.error("Insufficient balance");
+      return;
+    }
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/tournament/join-ff-tournament/${match.id}`,
+        {
+          cost: match.cost,
+          gameName,
+        }
+      );
+      if (res.data) {
+        setIsLoading(false);
+        onClose();
+        toast.success("Tournament joined successfully");
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+      toast.error("Unable to joined");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
       {/* Modal */}
@@ -68,8 +111,7 @@ const JoinFfMatch = ({ match, onClose }: Props) => {
               {match.id}
             </p>
             <p>
-              <span className="font-semibold text-gray-400">Time:</span>{" "}
-              {time}
+              <span className="font-semibold text-gray-400">Time:</span> {time}
             </p>
             <p>
               <span className="font-semibold text-gray-400">Game Name:</span>{" "}
@@ -106,6 +148,7 @@ const JoinFfMatch = ({ match, onClose }: Props) => {
             Freefire Game Name
           </label>
           <input
+            onChange={(e) => setGameName(e.target.value)}
             type="text"
             placeholder="gamingx3"
             className="w-full px-5 py-3 rounded-xl border border-gray-700 bg-black/40 text-white placeholder-gray-500 
@@ -116,10 +159,17 @@ const JoinFfMatch = ({ match, onClose }: Props) => {
 
         {/* Join Button */}
         <button
-          onClick={() => toast.error("Not working Coming Soon !")}
-          className="mt-6 cursor-pointer w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 rounded-xl font-bold shadow-md transition transform hover:scale-[1.02]"
+          onClick={handleTournament}
+          className="mt-6 text-center flex items-center justify-center cursor-pointer w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 rounded-xl font-bold shadow-md transition transform hover:scale-[1.02]"
         >
-          Confirm Join
+          {isLoading ? (
+            <>
+              <Loader className="w-5 h-5 animate-spin " />
+              <span>Processing...</span>
+            </>
+          ) : (
+            "Confirm Join"
+          )}
         </button>
       </div>
     </div>
