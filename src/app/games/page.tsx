@@ -1,43 +1,53 @@
 "use client";
 /* eslint-disable */
+import GamesLoading from "@/components/GamesLoading";
 import JoinFfMatch from "@/components/JoinFfMatch";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { BowArrow, Gamepad2, Clock, KeyRound, DoorOpen } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function Page() {
   const [selectedMatch, setSelectedMatch] = useState(null);
   const [matches, setMatches] = useState([]);
   const [enteredMatches, setEnteredMatches] = useState([]);
+  const [isCardLoad, setIsCardLoad] = useState(false);
   const [activeTab, setActiveTab] = useState<"available" | "entered">("available");
 
   const openJoinModal = (match: any) => setSelectedMatch(match);
   const closeJoinModal = () => setSelectedMatch(null);
 
- useEffect(() => {
-  const getAllFfTournament = async () => {
-    try {
-      const allRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/get-ff-tournament`);
-      setMatches(allRes.data.data);
-    } catch (error) {
-      console.error("Error fetching all matches:", error);
-    }
+  useEffect(() => {
+    setIsCardLoad(true);
 
-    try {
-      axios.defaults.withCredentials=true;
-      const enteredRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/tournament/get-entered-tournament`);
-      setEnteredMatches(enteredRes.data.data);
-    } catch (error) {
-      console.warn("No entered tournaments found or endpoint missing:", error);
-      setEnteredMatches([]); 
-    }
-  };
+    const getAllFfTournament = async () => {
+      try {
+        const allRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/get-ff-tournament`
+        );
+        setMatches(allRes.data.data);
+      } catch (error) {
+        console.error("Error fetching all matches:", error);
+      } finally {
+         setIsCardLoad(false);
+      }
 
-  getAllFfTournament();
-}, []);
+      try {
+        axios.defaults.withCredentials = true;
+        const enteredRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/tournament/get-entered-tournament`
+        );
+        setEnteredMatches(enteredRes.data.data);
+      } catch (error) {
+        console.warn("No entered tournaments found or endpoint missing:", error);
+        setEnteredMatches([]);
+      }
+    };
 
+    getAllFfTournament();
+  }, []);
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
@@ -46,7 +56,7 @@ export default function Page() {
       day: "2-digit",
       hour: "2-digit",
       minute: "2-digit",
-      hour12: true
+      hour12: true,
     });
   };
 
@@ -58,6 +68,10 @@ export default function Page() {
       Boolean(match?.roomId) &&
       Boolean(match?.password) &&
       now >= matchTime;
+
+    if (showCredentials) {
+      toast.success("Tournament is started");
+    }
 
     return (
       <motion.div
@@ -171,13 +185,21 @@ export default function Page() {
         <div className="flex justify-center gap-4 mb-4">
           <button
             onClick={() => setActiveTab("available")}
-            className={`px-4 py-2 cursor-pointer rounded-lg font-bold ${activeTab === "available" ? "bg-yellow-500 text-black" : "bg-gray-800 text-gray-300"}`}
+            className={`px-4 py-2 cursor-pointer rounded-lg font-bold ${
+              activeTab === "available"
+                ? "bg-yellow-500 text-black"
+                : "bg-gray-800 text-gray-300"
+            }`}
           >
             Available Matches
           </button>
           <button
             onClick={() => setActiveTab("entered")}
-            className={`px-4 py-2 cursor-pointer rounded-lg font-bold ${activeTab === "entered" ? "bg-yellow-500 text-black" : "bg-gray-800 text-gray-300"}`}
+            className={`px-4 py-2 cursor-pointer rounded-lg font-bold ${
+              activeTab === "entered"
+                ? "bg-yellow-500 text-black"
+                : "bg-gray-800 text-gray-300"
+            }`}
           >
             Entered Tournaments
           </button>
@@ -185,19 +207,25 @@ export default function Page() {
 
         {/* Matches Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
-          {activeTab === "available" &&
-            (matches.length === 0 ? (
-              <h1 className="text-center text-white text-xl col-span-2">No Matches Found</h1>
+          {isCardLoad ? (
+            Array.from({ length: 4 }).map((_, i) => <GamesLoading key={i} />)
+          ) : activeTab === "available" ? (
+            matches.length === 0 ? (
+              <h1 className="text-center text-white text-xl col-span-2">
+                No Matches Found
+              </h1>
             ) : (
               matches.map((match: any) => <MatchCard key={match.id} match={match} />)
-            ))}
-
-          {activeTab === "entered" &&
-            (enteredMatches.length === 0 ? (
-              <h1 className="text-center text-white text-xl col-span-2">No Entered Tournaments</h1>
-            ) : (
-              enteredMatches.map((match: any) => <MatchCard key={match.id} match={match} isEntered />)
-            ))}
+            )
+          ) : enteredMatches.length === 0 ? (
+            <h1 className="text-center text-white text-xl col-span-2">
+              No Entered Tournaments
+            </h1>
+          ) : (
+            enteredMatches.map((match: any) => (
+              <MatchCard key={match.id} match={match} isEntered />
+            ))
+          )}
         </div>
       </div>
 
