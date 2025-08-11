@@ -26,7 +26,8 @@ export default function Page() {
     }
 
     try {
-      const enteredRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/tournament/get-entered-tournament`, { withCredentials: true });
+      axios.defaults.withCredentials=true;
+      const enteredRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/tournament/get-entered-tournament`);
       setEnteredMatches(enteredRes.data.data);
     } catch (error) {
       console.warn("No entered tournaments found or endpoint missing:", error);
