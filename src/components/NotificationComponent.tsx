@@ -6,10 +6,7 @@ import { getToken as getMessagingToken } from "firebase/messaging";
 
 const NotificationComponent: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
-  const [permissionRequested, setPermissionRequested] =
-    useState<boolean>(false);
 
-  // Function to send the token to your backend
   const sendTokenToServer = async (userToken: string) => {
     try {
       console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
@@ -39,63 +36,46 @@ const NotificationComponent: React.FC = () => {
   };
 
   useEffect(() => {
-    const requestPermissionAndGetToken = async () => {
-      // Check if permission has been granted previously
-      if (Notification.permission === "granted") {
-        if (messaging) {
-          const currentToken = await getMessagingToken(messaging, {
-            vapidKey:
-              "BP7idSgQ1Y7CDUYiBWiyNBnJnem0N_VInVfREcHJbiXRCQMxn3julX8U9kIhXI3nHPfQ4OVd0BzMku752jZPSsk",
-          });
-          if (currentToken) {
-            setToken(currentToken);
-            console.log("FCM Registration Token:", currentToken);
-            // Send the token to the backend to trigger the welcome message
-            sendTokenToServer(currentToken);
-          }
-        }
-      } else if (
-        Notification.permission === "default" &&
-        !permissionRequested
-      ) {
-        // Request permission if it hasn't been granted or denied yet
+    const setupNotifications = async () => {
+      if ("serviceWorker" in navigator && messaging) {
         try {
-          const permission = await Notification.requestPermission();
-          setPermissionRequested(true);
+          // Register the service worker
+          const registration = await navigator.serviceWorker.register(
+            "/firebase-messaging-sw.js"
+          );
+          console.log("Service Worker registered:", registration.scope); // Request permission if not already granted
+
+          let permission = Notification.permission;
+          if (permission === "default") {
+            permission = await Notification.requestPermission();
+          }
+
           if (permission === "granted") {
-            window.location.reload(); // Reload to get the token
+            // Get the FCM token
+            const currentToken = await getMessagingToken(messaging, {
+              vapidKey:
+                "BP7idSgQ1Y7CDUYiBWiyNBnJnem0N_VInVfREcHJbiXRCQMxn3julX8U9kIhXI3nHPfQ4OVd0BzMku752jZPSsk",
+            });
+            if (currentToken) {
+              setToken(currentToken);
+              console.log("FCM Registration Token:", currentToken); // Send token to backend
+              sendTokenToServer(currentToken);
+            }
           }
         } catch (error) {
-          console.error("Unable to get permission to notify.", error);
-        }
+          console.error("Error setting up notifications:", error);
+        } // Handle foreground messages
+
+        onMessage(messaging, (payload) => {
+          console.log("Foreground Message received:", payload);
+        });
       }
     };
 
-    if ("serviceWorker" in navigator && messaging) {
-      navigator.serviceWorker
-        .register("/firebase-messaging-sw.js")
-        .then((registration) => {
-          console.log("Service Worker registered:", registration.scope);
-          requestPermissionAndGetToken();
-        })
-        .catch((err) => {
-          console.error("Service Worker registration failed:", err);
-        });
-    }
+    setupNotifications();
+  }, []);
 
-    // Handle foreground notifications
-    if (messaging) {
-      onMessage(messaging, (payload) => {
-        console.log("Foreground Message received:", payload);
-      });
-    }
-  }, [permissionRequested]);
-
-  return (
-    <div>
-    
-    </div>
-  );
+  return null;
 };
 
 export default NotificationComponent;
