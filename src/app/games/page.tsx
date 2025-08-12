@@ -2,6 +2,7 @@
 /* eslint-disable */
 import GamesLoading from "@/components/GamesLoading";
 import JoinFfMatch from "@/components/JoinFfMatch";
+import { match } from "assert";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { BowArrow, Gamepad2, Clock, KeyRound, DoorOpen } from "lucide-react";
@@ -14,7 +15,9 @@ export default function Page() {
   const [matches, setMatches] = useState([]);
   const [enteredMatches, setEnteredMatches] = useState([]);
   const [isCardLoad, setIsCardLoad] = useState(false);
-  const [activeTab, setActiveTab] = useState<"available" | "entered">("available");
+  const [activeTab, setActiveTab] = useState<"available" | "entered">(
+    "available"
+  );
 
   const openJoinModal = (match: any) => setSelectedMatch(match);
   const closeJoinModal = () => setSelectedMatch(null);
@@ -31,7 +34,7 @@ export default function Page() {
       } catch (error) {
         console.error("Error fetching all matches:", error);
       } finally {
-         setIsCardLoad(false);
+        setIsCardLoad(false);
       }
 
       try {
@@ -41,7 +44,10 @@ export default function Page() {
         );
         setEnteredMatches(enteredRes.data.data);
       } catch (error) {
-        console.warn("No entered tournaments found or endpoint missing:", error);
+        console.warn(
+          "No entered tournaments found or endpoint missing:",
+          error
+        );
         setEnteredMatches([]);
       }
     };
@@ -50,7 +56,9 @@ export default function Page() {
   }, []);
 
   const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
+    // Remove Z and treat as local time
+    const localDateStr = dateStr.replace("Z", "");
+    const date = new Date(localDateStr);
     return date.toLocaleString("en-US", {
       month: "short",
       day: "2-digit",
@@ -60,7 +68,13 @@ export default function Page() {
     });
   };
 
-  const MatchCard = ({ match, isEntered }: { match: any; isEntered?: boolean }) => {
+  const MatchCard = ({
+    match,
+    isEntered,
+  }: {
+    match: any;
+    isEntered?: boolean;
+  }) => {
     const matchTime = new Date(match.time).getTime();
     const now = Date.now();
     const showCredentials =
@@ -72,6 +86,7 @@ export default function Page() {
     if (showCredentials) {
       toast.success("Tournament is started");
     }
+    console.log(match?.time);
 
     return (
       <motion.div
@@ -115,7 +130,9 @@ export default function Page() {
             <span className="text-gray-300">Created by : Admin</span>
           </div>
           <div className="inline-block bg-purple-600 px-3 py-1 rounded-md text-white">
-            {match.skill === true ? "Character Skill On" : "Character Skill Off"}
+            {match.skill === true
+              ? "Character Skill On"
+              : "Character Skill Off"}
           </div>
         </div>
 
@@ -142,9 +159,13 @@ export default function Page() {
               </div>
             </div>
           ) : now >= matchTime ? (
-            <span className="text-yellow-400 text-xs">Room not created yet</span>
+            <span className="text-yellow-400 text-xs">
+              Room not created yet
+            </span>
           ) : (
-            <span className="text-gray-400 text-xs">Wait for match time...</span>
+            <span className="text-gray-400 text-xs">
+              Wait for match time...
+            </span>
           )}
         </div>
       </motion.div>
@@ -215,7 +236,9 @@ export default function Page() {
                 No Matches Found
               </h1>
             ) : (
-              matches.map((match: any) => <MatchCard key={match.id} match={match} />)
+              matches.map((match: any) => (
+                <MatchCard key={match.id} match={match} />
+              ))
             )
           ) : enteredMatches.length === 0 ? (
             <h1 className="text-center text-white text-xl col-span-2">
