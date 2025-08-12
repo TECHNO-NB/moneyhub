@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { store } from "@/redux/store";
 import NProgress from "nprogress";
 import { useEffect } from "react";
+import NotificationComponent from "./NotificationComponent";
 
 NProgress.configure({ showSpinner: false });
 
@@ -30,6 +31,7 @@ export default function LayoutShell({
     <Provider store={store}>
       {!hideLayout && <Navbar />}
       {children}
+      <NotificationComponent/>
       <BottomTab />
       {(!hideLayout && !hideLayout2) && <Footer />}
     </Provider>
