@@ -130,7 +130,7 @@ export default function Page() {
               onClick={() => openJoinModal(match)}
               className="bg-red-500 cursor-pointer hover:bg-red-600 px-4 py-1 text-sm font-bold rounded-lg transition"
             >
-              Join {match.cost}
+              Join {match.cost === 0 ? "free" : match.cost}
             </button>
           ) : showCredentials ? (
             <div className="text-sm text-white space-y-1">

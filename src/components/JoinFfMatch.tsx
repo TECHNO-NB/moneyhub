@@ -48,6 +48,11 @@ const JoinFfMatch = ({ match, onClose }: Props) => {
       setIsLoading(false);
       return;
     }
+    if (!user.id) {
+      router.push("/auth");
+      toast.error("Please login to join the match");
+      return;
+    }
 
     if (user.balance < match.cost) {
       router.push("/add-coin");
