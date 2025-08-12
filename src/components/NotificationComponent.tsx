@@ -12,18 +12,21 @@ const NotificationComponent: React.FC = () => {
   // Function to send the token to your backend
   const sendTokenToServer = async (userToken: string) => {
     try {
-        console.log(process.env.NEXT_PUBLIC_BACKEND_URL)
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/send-notification`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token: userToken,
-          title: "Welcome to Our Website!",
-          body: "Thanks for enabling notifications. You'll now receive updates from us.",
-        }),
-      });
+      console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/send-notification`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            token: userToken,
+            title: "Welcome to MoneyHub!",
+            body: "You'll now receive updates from us.",
+          }),
+        }
+      );
 
       if (response.ok) {
         console.log("Welcome notification sent successfully!");
@@ -41,7 +44,8 @@ const NotificationComponent: React.FC = () => {
       if (Notification.permission === "granted") {
         if (messaging) {
           const currentToken = await getMessagingToken(messaging, {
-            vapidKey: "BP7idSgQ1Y7CDUYiBWiyNBnJnem0N_VInVfREcHJbiXRCQMxn3julX8U9kIhXI3nHPfQ4OVd0BzMku752jZPSsk",
+            vapidKey:
+              "BP7idSgQ1Y7CDUYiBWiyNBnJnem0N_VInVfREcHJbiXRCQMxn3julX8U9kIhXI3nHPfQ4OVd0BzMku752jZPSsk",
           });
           if (currentToken) {
             setToken(currentToken);
@@ -83,24 +87,13 @@ const NotificationComponent: React.FC = () => {
     if (messaging) {
       onMessage(messaging, (payload) => {
         console.log("Foreground Message received:", payload);
-        alert(
-          `New Notification: ${payload.notification?.title} - ${payload.notification?.body}`
-        );
       });
     }
   }, [permissionRequested]);
 
   return (
     <div>
-      <h1>Firebase Notifications</h1>
-      {token ? (
-        <p>
-          You have successfully subscribed to notifications! Your token is:{" "}
-          <strong>{token}</strong>
-        </p>
-      ) : (
-        <p>Waiting for notification permission...</p>
-      )}
+    
     </div>
   );
 };
