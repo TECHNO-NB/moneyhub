@@ -73,8 +73,12 @@ const JoinFfMatch = ({ match, onClose }: Props) => {
         onClose();
         toast.success("Tournament joined successfully");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      if (error.response.status === 409) {
+        toast.error("You are already in this tournament");
+        return;
+      }
       setIsLoading(false);
       toast.error("Unable to joined");
     } finally {
