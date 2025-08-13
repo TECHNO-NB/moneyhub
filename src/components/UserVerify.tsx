@@ -29,6 +29,7 @@ export default function VerifyUser() {
               email: res.data.data.email,
               balance: res.data.data.balance,
               role: res.data.data.role,
+              token: res.data.data.token,
             };
             dispatch(addUser(userData));
             toast.success(`Welcome back ${res.data.data.fullName}`);

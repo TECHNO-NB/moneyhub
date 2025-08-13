@@ -7,6 +7,7 @@ export interface userState {
   email: string;
   balance: number;
   role: string;
+  token?:string;
 }
 
 const initialState: userState = {
@@ -16,6 +17,7 @@ const initialState: userState = {
   email: "",
   balance: 0,
   role: "",
+  token:"",
 };
 const userSlice = createSlice({
   name: "user",
@@ -28,6 +30,7 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.balance = action.payload.balance;
       state.role = action.payload.role;
+      state.token=action.payload.token;
     },
   },
 });
