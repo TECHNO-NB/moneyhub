@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { messaging, onMessage } from "../firebaseConfig";
 import { getToken as getMessagingToken } from "firebase/messaging";
+import axios from "axios";
 
 const NotificationComponent: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
@@ -58,6 +59,7 @@ const NotificationComponent: React.FC = () => {
             });
             if (currentToken) {
               setToken(currentToken);
+              savedTokenToDb(currentToken);
               console.log("FCM Registration Token:", currentToken); // Send token to backend
               sendTokenToServer(currentToken);
             }
@@ -74,6 +76,21 @@ const NotificationComponent: React.FC = () => {
 
     setupNotifications();
   }, []);
+
+  const savedTokenToDb = async (token: string) => {
+    try {
+      console.log("hit server")
+      axios.defaults.withCredentials = true;
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/token`, {
+        token,
+      });
+      if (res) {
+        console.log("Token saved to database:", res.data);
+      }
+    } catch (error) {
+      console.error("Error saving token to database:", error);
+    }
+  };
 
   return null;
 };
