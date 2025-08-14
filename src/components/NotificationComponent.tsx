@@ -4,6 +4,7 @@ import { messaging, onMessage } from "../firebaseConfig";
 import { getToken as getMessagingToken } from "firebase/messaging";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 const NotificationComponent: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
@@ -11,10 +12,10 @@ const NotificationComponent: React.FC = () => {
 
   const savedTokenToDb = async (token: string) => {
     try {
+      axios.defaults.withCredentials = true;
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/token`,
-        { token },
-        { withCredentials: true }
+        { token }
       );
       console.log("Token saved to database:", res.data);
     } catch (error) {
@@ -24,6 +25,7 @@ const NotificationComponent: React.FC = () => {
 
   const sendTokenToServer = async (userToken: string) => {
     try {
+      axios.defaults.withCredentials = true;
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/send-notification`,
         {
@@ -47,47 +49,53 @@ const NotificationComponent: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    // ✅ Run only if user is logged in and has NO token saved
-    if (!user || !user.id || user.token) return;
+useEffect(() => {
+  // ✅ Run only if user is logged in and has NO token saved
+  if (!user || !user.id || user.token) return;
 
-    const setupNotifications = async () => {
-      if ("serviceWorker" in navigator && messaging) {
-        try {
-          const registration = await navigator.serviceWorker.register(
-            "/firebase-messaging-sw.js"
+  const setupNotifications = async () => {
+    if ("serviceWorker" in navigator && messaging) {
+      try {
+        const registration = await navigator.serviceWorker.register(
+          "/firebase-messaging-sw.js"
+        );
+        console.log("Service Worker registered:", registration.scope);
+
+        let permission = Notification.permission;
+        if (permission === "default") {
+          permission = await Notification.requestPermission();
+        } else if (permission === "denied") {
+         toast.error(
+            "Notifications are blocked. Please enable them in your browser's site settings."
           );
-          console.log("Service Worker registered:", registration.scope);
-
-          let permission = Notification.permission;
-          if (permission === "default") {
-            permission = await Notification.requestPermission();
-          }
-
-          if (permission === "granted") {
-            const currentToken = await getMessagingToken(messaging, {
-              vapidKey: process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY,
-            });
-
-            if (currentToken) {
-              setToken(currentToken);
-              await savedTokenToDb(currentToken);
-              await sendTokenToServer(currentToken);
-              console.log("FCM Registration Token:", currentToken);
-            }
-          }
-        } catch (error) {
-          console.error("Error setting up notifications:", error);
+          return; // stop setup if denied
         }
 
-        onMessage(messaging, (payload) => {
-          console.log("Foreground Message received:", payload);
-        });
-      }
-    };
+        if (permission === "granted") {
+          const currentToken = await getMessagingToken(messaging, {
+            vapidKey: process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY,
+          });
 
-    setupNotifications();
-  }, [user]); // Runs only when user changes
+          if (currentToken) {
+            setToken(currentToken);
+            await savedTokenToDb(currentToken);
+            await sendTokenToServer(currentToken);
+            console.log("FCM Registration Token:", currentToken);
+          }
+        }
+      } catch (error) {
+        console.error("Error setting up notifications:", error);
+      }
+
+      onMessage(messaging, (payload) => {
+        console.log("Foreground Message received:", payload);
+      });
+    }
+  };
+
+  setupNotifications();
+}, [user]);
+
 
   return null;
 };
