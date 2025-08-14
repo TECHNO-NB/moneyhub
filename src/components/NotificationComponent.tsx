@@ -1,23 +1,34 @@
-// frontend/src/components/NotificationComponent.tsx
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { messaging, onMessage } from "../firebaseConfig";
 import { getToken as getMessagingToken } from "firebase/messaging";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const NotificationComponent: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
+  const user = useSelector((state: any) => state.user);
+
+  const savedTokenToDb = async (token: string) => {
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/token`,
+        { token },
+        { withCredentials: true }
+      );
+      console.log("Token saved to database:", res.data);
+    } catch (error) {
+      console.error("Error saving token to database:", error);
+    }
+  };
 
   const sendTokenToServer = async (userToken: string) => {
     try {
-      console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/send-notification`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             token: userToken,
             title: "Welcome to MoneyHub!",
@@ -37,14 +48,16 @@ const NotificationComponent: React.FC = () => {
   };
 
   useEffect(() => {
+    // ✅ Run only if user is logged in and has NO token saved
+    if (!user || !user.id || user.token) return;
+
     const setupNotifications = async () => {
       if ("serviceWorker" in navigator && messaging) {
         try {
-          // Register the service worker
           const registration = await navigator.serviceWorker.register(
             "/firebase-messaging-sw.js"
           );
-          console.log("Service Worker registered:", registration.scope); // Request permission if not already granted
+          console.log("Service Worker registered:", registration.scope);
 
           let permission = Notification.permission;
           if (permission === "default") {
@@ -52,21 +65,20 @@ const NotificationComponent: React.FC = () => {
           }
 
           if (permission === "granted") {
-            // Get the FCM token
             const currentToken = await getMessagingToken(messaging, {
-              vapidKey:
-                "BP7idSgQ1Y7CDUYiBWiyNBnJnem0N_VInVfREcHJbiXRCQMxn3julX8U9kIhXI3nHPfQ4OVd0BzMku752jZPSsk",
+              vapidKey: process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY,
             });
+
             if (currentToken) {
               setToken(currentToken);
-              savedTokenToDb(currentToken);
-              console.log("FCM Registration Token:", currentToken); // Send token to backend
-              sendTokenToServer(currentToken);
+              await savedTokenToDb(currentToken);
+              await sendTokenToServer(currentToken);
+              console.log("FCM Registration Token:", currentToken);
             }
           }
         } catch (error) {
           console.error("Error setting up notifications:", error);
-        } // Handle foreground messages
+        }
 
         onMessage(messaging, (payload) => {
           console.log("Foreground Message received:", payload);
@@ -75,22 +87,7 @@ const NotificationComponent: React.FC = () => {
     };
 
     setupNotifications();
-  }, []);
-
-  const savedTokenToDb = async (token: string) => {
-    try {
-      console.log("hit server")
-      axios.defaults.withCredentials = true;
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/token`, {
-        token,
-      });
-      if (res) {
-        console.log("Token saved to database:", res.data);
-      }
-    } catch (error) {
-      console.error("Error saving token to database:", error);
-    }
-  };
+  }, [user]); // Runs only when user changes
 
   return null;
 };
