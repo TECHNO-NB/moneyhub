@@ -7,10 +7,15 @@ import axios from "axios";
 import { usePathname } from "next/navigation";
 import { RefreshCw } from "lucide-react";
 
-
 type Notification = {
   message: string;
-  status: "pending" | "approved" | "rejected" | "delivered";
+  status:
+    | "pending"
+    | "approved"
+    | "rejected"
+    | "delivered"
+    | "completed"
+    | "started";
   createdAt: string;
 };
 
@@ -23,42 +28,47 @@ const Page = () => {
     setLoading(true);
     try {
       // ✅ Call new merged endpoint
-      axios.defaults.withCredentials=true;
+      axios.defaults.withCredentials = true;
       const res = await axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/balance/balance-status`
       );
 
       // ✅ Extract loadBalance + ffOrder into one flat array
-   
-      const loadNotifications: Notification[] =(res.data.data.loadBalance || [] ).map(
-        (item: any) => ({
-          message: item.message || "Load Balance update",
-          status: item.status,
-          createdAt: item.updatedAt,
-        })
-      );
- 
-      const ffNotifications: Notification[] =(res.data.data.ffOrders ||  []).map(
-        (item: any) => ({
-          message: item.message || "Free Fire order update",
-          status: item.status,
-          createdAt: item.updatedAt,
-        })
-      );
-      const tournamentEnterNotications: Notification[] =(res.data.data.tournament ||  []).map(
-        (item: any) => ({
-          message: item.message || "Free Fire tourament update",
-          status: item.status,
-          createdAt: item.updatedAt,
-        })
-      );
 
-      const merged = [...loadNotifications, ...ffNotifications,...tournamentEnterNotications].sort(
-        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      const loadNotifications: Notification[] = (
+        res.data.data.loadBalance || []
+      ).map((item: any) => ({
+        message: item.message || "Load Balance update",
+        status: item.status,
+        createdAt: item.updatedAt,
+      }));
+
+      const ffNotifications: Notification[] = (
+        res.data.data.ffOrders || []
+      ).map((item: any) => ({
+        message: item.message || "Free Fire order update",
+        status: item.status,
+        createdAt: item.updatedAt,
+      }));
+      const tournamentEnterNotications: Notification[] = (
+        res.data.data.tournament || []
+      ).map((item: any) => ({
+        message: item.message || "Free Fire tourament update",
+        status: item.status,
+        createdAt: item.updatedAt,
+      }));
+
+      const merged = [
+        ...loadNotifications,
+        ...ffNotifications,
+        ...tournamentEnterNotications,
+      ].sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
 
       setData(merged);
-      console.log("merged",loadNotifications)
+      console.log("merged", loadNotifications);
     } catch (error) {
       console.error("Failed to fetch notifications", error);
     }
@@ -68,7 +78,7 @@ const Page = () => {
   useEffect(() => {
     if (path === "/notification") {
       fetchNotification();
-      console.log(data)
+      console.log(data);
     }
   }, [path]);
 
@@ -82,6 +92,7 @@ const Page = () => {
   const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {
       case "approved":
+      case "completed":
       case "delivered":
         return "text-green-500 bg-green-800/30 border-green-600";
       case "pending":
@@ -89,7 +100,7 @@ const Page = () => {
       case "rejected":
         return "text-red-500 bg-red-800/20 border-red-600";
       default:
-        return "text-white bg-gray-700 border-gray-500";
+        return "text-black bg-yellow-400 border-gray-500";
     }
   };
 
@@ -109,38 +120,39 @@ const Page = () => {
         </button>
       </div>
 
-      <div className="mt-6 space-y-4">
-        {data && data?.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-start sm:items-center bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 shadow-md hover:shadow-lg transition-all gap-4"
-          >
-            <Image
-              src={coin}
-              height={40}
-              width={40}
-              alt="coin logo"
-              className="rounded-full mt-1 sm:mt-0"
-            />
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full">
-              <div>
-                <p className="text-white text-sm sm:text-base font-medium">
-                  {item.message}
-                </p>
-                <span className="text-gray-400 text-xs mt-1 block">
-                  {formatTime(item.createdAt)}
+      <div className="mt-6 space-y-4 max-h-fit">
+        {data &&
+          data?.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-start sm:items-center  bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 shadow-md hover:shadow-lg transition-all gap-4"
+            >
+              <Image
+                src={coin}
+                height={40}
+                width={40}
+                alt="coin logo"
+                className="rounded-full mt-1 sm:mt-0"
+              />
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full">
+                <div>
+                  <p className="text-white text-sm sm:text-base font-medium">
+                    {item.message}
+                  </p>
+                  <span className="text-gray-400 text-xs mt-1 block">
+                    {formatTime(item.createdAt)}
+                  </span>
+                </div>
+                <span
+                  className={`mt-2 sm:mt-0 sm:ml-auto w-20 border text-xs px-3 py-1 rounded-sm font-medium ${getStatusStyle(
+                    item.status
+                  )}`}
+                >
+                  {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
                 </span>
               </div>
-              <span
-                className={`mt-2 sm:mt-0 sm:ml-auto w-20 border text-xs px-3 py-1 rounded-sm font-medium ${getStatusStyle(
-                  item.status
-                )}`}
-              >
-                {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
-              </span>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
