@@ -7,12 +7,12 @@ import { Download, ImagePlus, Loader, TriangleAlert } from "lucide-react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import esewaqr from "../../../public/esewa-qr.jpg"
+import esewaqr from "../../../public/esewa-qr.jpg";
 
 const Page: React.FC = () => {
   const fileRef = useRef<HTMLInputElement>(null);
   //   const [setFile] = useState<File | null>(null);
-  const router= useRouter();
+  const router = useRouter();
   const [preview, setPreview] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
   const [amount, setAmount] = useState<number>(0);
@@ -62,9 +62,8 @@ const Page: React.FC = () => {
         }
       );
       if (loadAmount.data.success) {
-        router.push("/profile")
+        router.push("/profile");
         toast.success("Send to payment verfications");
-
       }
       setIsLoading(false);
     } catch (error) {
@@ -82,9 +81,9 @@ const Page: React.FC = () => {
     }
   }, [file, amount]);
 
-   const handleDownload = () => {
+  const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = esewaqr.src; 
+    link.href = esewaqr.src;
     link.download = "esewaqr.png";
     document.body.appendChild(link);
     link.click();
@@ -124,7 +123,10 @@ const Page: React.FC = () => {
       </div>
 
       {/* Download QR Button */}
-      <button onClick={handleDownload} className="w-full md:w-[40%] bg-red-600 hover:bg-red-700 transition-all py-3 rounded-xl flex items-center justify-center gap-2 font-semibold text-white shadow">
+      <button
+        onClick={handleDownload}
+        className="w-full md:w-[40%] bg-red-600 hover:bg-red-700 transition-all py-3 rounded-xl flex items-center justify-center gap-2 font-semibold text-white shadow"
+      >
         <Download size={20} /> Download QR
       </button>
 
@@ -193,6 +195,21 @@ const Page: React.FC = () => {
             "  Load Wallet"
           )}
         </button>
+      </div>
+      <div className="max-w-4xl mx-auto mt-6 text-center">
+        <a
+          href={`https://wa.me/9779869436906?text=Hello! I want to add coin on moneyhub.store.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-block px-8 py-3 rounded-xl text-lg font-semibold shadow-lg transition
+       
+          
+              bg-green-500 hover:bg-green-600 text-white cursor-pointer
+              
+          `}
+        >
+          Problem? WhatsApp
+        </a>
       </div>
     </div>
   );
