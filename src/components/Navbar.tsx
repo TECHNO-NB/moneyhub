@@ -119,11 +119,11 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4 }}
         >
-          <div onClick={()=> navigate.push("/add-coin")} className="flex gap-1 cursor-pointer items-center ">
+          <Link href="/add-coin" className="flex gap-1 cursor-pointer items-center ">
             <Image src={coin} alt="coin" height={20} className=" opacity-[1]" width={25} />
             <p className="text-yellow-300 ml-1 font-bold">{userData.id ? userData.balance : 0}</p>
             <Plus className="text-white" width={20} />
-          </div>
+          </Link>
         </motion.div>
       </motion.nav>
     </>

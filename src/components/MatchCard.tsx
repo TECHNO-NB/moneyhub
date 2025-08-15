@@ -48,6 +48,14 @@ export default function MatchCard({
       className="relative border border-yellow-500/20 bg-white/5 backdrop-blur-md rounded-2xl p-5 shadow-lg hover:shadow-yellow-500/30 transition duration-300"
     >
       {/* Header */}
+      {showCredentials ? (
+        <div
+          className=" absolute top-4  font-bold text-white   bg-green-400 text-center
+       right-4 px-1 py-0 rounded-3xl border-2 flex items-center"
+        >
+          Game Started
+        </div>
+      ) : null}
       <div className="flex items-center gap-4">
         <Image
           src="https://cdn.vectorstock.com/i/1000v/30/87/free-fire-logo-game-idea-vector-51373087.jpg"
@@ -64,7 +72,7 @@ export default function MatchCard({
 
       {/* Time & Owner */}
       <div className="mt-4 flex justify-between items-center text-sm">
-        <div className="flex items-center gap-2 bg-blue-600 px-3 py-1 rounded-lg font-medium text-white">
+        <div className="flex items-center gap-2 bg-blue-600 px-3 py-1 rounded-lg font-medium  text-white">
           <Clock size={16} /> {formattedDate}
         </div>
         <div className="flex items-center gap-2 text-red-400 font-medium">

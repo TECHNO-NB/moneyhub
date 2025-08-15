@@ -92,6 +92,7 @@ export default function page() {
 
         {/* Matches Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+
           {activeTab === "available" ? (
             isCardLoad ? (
               Array.from({ length: 1 }).map((_, i) => <GamesLoading key={i} />)
