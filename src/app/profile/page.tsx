@@ -166,18 +166,18 @@ export default function ProfilePage() {
           {activeTab === "History" && (
             <div>
               <h2 className="text-xl font-semibold mb-4">Coin History</h2>
-              <ul className="space-y-2 text-gray-300">
+              {/* <ul className="space-y-2 text-gray-300">
                 <li>✅ Watched ad – Earned 50 coins</li>
                 <li>🛒 Redeemed gift card – Spent 20 coins</li>
                 <li>🎉 Referral bonus – Earned 100 coins</li>
-              </ul>
+              </ul> */}
             </div>
           )}
 
           {activeTab === "Buy Products" && (
             <div>
               <h2 className="text-xl font-semibold mb-4">Product Orders</h2>
-              <ul className="space-y-4 text-gray-300">
+              {/* <ul className="space-y-4 text-gray-300">
                 <li>
                   🎧 Wireless Earbuds –{" "}
                   <span className="text-green-400">✅ Delivered</span>
@@ -190,7 +190,7 @@ export default function ProfilePage() {
                   🕹️ Gamepad –{" "}
                   <span className="text-green-400">✅ Delivered</span>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           )}
 
@@ -207,7 +207,7 @@ export default function ProfilePage() {
             <div>
               <h2 className="text-xl font-semibold mb-4">Redemption Records</h2>
               <p className="text-gray-300">
-                You’ve redeemed 450 coins this month.
+                You’ve redeemed 0 coins this month.
               </p>
             </div>
           )}
