@@ -113,12 +113,12 @@ export default function TopUpRate() {
         </div>
       ) : null}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
-        {topUpOptions.map(({ id, diamondTitle, price, realPrice }) => (
+        {topUpOptions.map(({ id, diamondTitle, price, realPrice },index) => (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: id * 0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             key={id}
             onClick={() => openModal(id)}
             className={`bg-white rounded-2xl shadow-lg p-4 hover:scale-105 transition-transform cursor-pointer ${
