@@ -64,7 +64,7 @@ const PlatForms = () => {
               />
             </div>
           </Link>
-          <Link href="/1xbet">
+          <Link href="/forex">
             <div className="bg-white border-4 border-yellow-400 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 flex justify-center items-center h-40">
               <Image
                 src={forex}

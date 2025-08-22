@@ -30,13 +30,15 @@ export default function MatchCard({
   const formattedDate = formatDate(match.time);
   const now = Date.now();
 
-  const showCredentials =
+  const showCredentials = now >= matchDate.getTime();
+
+  const showEnterCredentials =
     isEntered &&
     Boolean(match?.roomId) &&
     Boolean(match?.password) &&
     now >= matchDate.getTime();
 
-  if (showCredentials) {
+  if (showEnterCredentials) {
     toast.success("Tournament is started");
   }
 
@@ -101,7 +103,15 @@ export default function MatchCard({
 
         {!isEntered ? (
           <button
-            onClick={() => openJoinModal && openJoinModal(match)}
+            onClick={() =>{
+              if(showCredentials){
+                toast.error("Tournament already started.Try in next match");
+                return;
+              }
+
+            openJoinModal && openJoinModal(match)
+            }
+          }
             className="bg-red-500 cursor-pointer hover:bg-red-600 px-4 py-1 text-sm font-bold rounded-lg transition"
           >
             Join {match.cost === 0 ? "free" : match.cost}
