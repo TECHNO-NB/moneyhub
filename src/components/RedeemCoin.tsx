@@ -32,9 +32,11 @@ const RedeemCoin = () => {
 
   const handleRedeem = async () => {
     setIsLoading(true);
-    if (!amount || amount  < 50) {
+    if (!amount || amount < 50) {
       setIsLoading(false);
-      toast.error("Please enter the amount of coins to redeem");
+      toast.error(
+        "Please enter the amount of coins to redeem should be more than 50"
+      );
       return;
     }
     if (!screenshot) {
@@ -62,6 +64,8 @@ const RedeemCoin = () => {
       );
       if (res) {
         setIsLoading(false);
+        setPreView(null);
+        setAmount(0);
         toast.success(res.data.message);
       }
     } catch (error) {

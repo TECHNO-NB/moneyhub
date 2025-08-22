@@ -57,11 +57,19 @@ const Page = () => {
         status: item.status,
         createdAt: item.updatedAt,
       }));
+       const coinExhangeNotications: Notification[] = (
+        res.data.data.coinExchange || []
+      ).map((item: any) => ({
+        message: item.message || "Free Fire tourament update",
+        status: item.status,
+        createdAt: item.updatedAt,
+      }));
 
       const merged = [
         ...loadNotifications,
         ...ffNotifications,
         ...tournamentEnterNotications,
+        ...coinExhangeNotications,
       ].sort(
         (a, b) =>
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
