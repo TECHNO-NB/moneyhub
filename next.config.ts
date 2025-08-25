@@ -24,7 +24,8 @@ const nextConfig: NextConfig = {
       "cdn.pixabay.com",
       "cdn.pixabay.com",
       "cdn.vectorstock.com",
-      "wallpapers.com"
+      "wallpapers.com",
+      "res.cloudinary.com"
     ],
   },
 };
