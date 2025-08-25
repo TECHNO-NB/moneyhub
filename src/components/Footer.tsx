@@ -25,8 +25,8 @@ const Footer = () => {
 
     <div>
       <h3 className="text-lg font-semibold mb-3">Contact</h3>
-      <p className="text-sm text-gray-400">Email: support@moneyhub.com</p>
-      <p className="text-sm text-gray-400">WhatsApp: +91 98765 43210</p>
+      <p className="text-sm text-gray-400">Email: bhattarain538@gmail.com</p>
+      <p className="text-sm text-gray-400">WhatsApp: 9762741548</p>
       <div className="flex mt-4 space-x-4">
         <a href="#" className="hover:text-yellow-400">Instagram</a>
         <a href="#" className="hover:text-yellow-400">Telegram</a>
