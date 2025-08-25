@@ -13,11 +13,11 @@ import { useSelector } from "react-redux";
   
 
 const navLinks = [
-  { href: "/stake", label: "Stake" },
-  { href: "/1xbet", label: "1xbet" },
+  // { href: "/stake", label: "Stake" },
+  // { href: "/1xbet", label: "1xbet" },
   { href: "/ff-topup", label: "FF Topup" },
   { href: "/tiktok", label: "TikTok" },
-  { href: "/forex", label: "Forex" },
+  // { href: "/forex", label: "Forex" },
 ];
 
 const Navbar = () => {
