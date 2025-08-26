@@ -109,7 +109,18 @@ export default function AuthPage() {
 
       const formData = new FormData();
       if (avatarFile) formData.append("avatar", avatarFile);
-
+        
+      if(registerEmail.includes("@gmail.com") === false){
+        toast.error("Please enter a valid Gmail address");
+        setIsLoading(false);
+        return;
+      }
+      if(registerPassword.length < 6){
+        toast.error("Password must be at least 6 characters long");
+        setIsLoading(false);
+        return;
+      }
+      
       if (!avatarFile) {
         toast.error("Please upload an avatar");
         setIsLoading(false);
