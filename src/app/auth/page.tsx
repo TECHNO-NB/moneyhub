@@ -71,6 +71,12 @@ export default function AuthPage() {
   const handleEmailLogin = async () => {
     try {
       setIsLoading(true);
+      if (!loginEmail || !loginPassword) {
+        toast.error("Please fill all fields");
+        setIsLoading(false);
+        return;
+      }
+
       axios.defaults.withCredentials = true;
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/login`,
@@ -84,9 +90,13 @@ export default function AuthPage() {
         router.push("/profile");
         dispatch(addUser(response.data.data));
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      toast.error("Login failed");
+      if (error.status === 404) {
+        toast.error("User not found");
+      } else {
+        toast.error("Login failed");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -99,6 +109,24 @@ export default function AuthPage() {
 
       const formData = new FormData();
       if (avatarFile) formData.append("avatar", avatarFile);
+
+      if (!avatarFile) {
+        toast.error("Please upload an avatar");
+        setIsLoading(false);
+        return;
+      }
+
+      if (avatarFile && avatarFile.size > 2 * 1024 * 1024) {
+        toast.error("Avatar size should be less than 2MB");
+        setIsLoading(false);
+        return;
+      }
+      if (!fullName || !registerEmail || !registerPassword) {
+        toast.error("Please fill all fields");
+        setIsLoading(false);
+        return;
+      }
+
       formData.append("fullName", fullName);
       formData.append("email", registerEmail);
       formData.append("password", registerPassword);
@@ -119,9 +147,14 @@ export default function AuthPage() {
         setRegisterEmail("");
         setRegisterPassword("");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      toast.error("Registration failed");
+      if (error.status === 409) {
+        toast.error("User already registered with this email");
+      } else {
+        toast.error("Registration failed");
+      }
+      setIsLoading(false);
     } finally {
       setIsLoading(false);
     }

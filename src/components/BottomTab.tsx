@@ -58,7 +58,7 @@ export default function BottomTab() {
                   alt="user avatar"
                   height={23}
                   width={23}
-                  className="rounded-full"
+                  className="rounded-full object-cover h-6 w-6"
                 />
               ) : (
                 tab.icon

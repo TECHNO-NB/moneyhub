@@ -96,7 +96,7 @@ export default function ProfilePage() {
                 alt="User Avatar"
                 width={72}
                 height={72}
-                className="rounded-full border-2 border-white shadow-md"
+                className=" w-20 h-20 rounded-full border-2 border-white shadow-md object-cover"
               />
               <div>
                 <h1 className="text-2xl font-bold">{userData.fullName}</h1>

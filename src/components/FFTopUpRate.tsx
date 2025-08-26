@@ -42,6 +42,7 @@ export default function TopUpRate() {
     (data) => data.id === selectedCard
   );
 
+  console.log("Selected Card Data:", selectedCard);
   // Message for WhatsApp (full)
   const whatsappMessage = selectedCardData
     ? `Hello, I'm interested in your FreeFire TOPUP of ${selectedCardData.diamonds} package.\nPrice: ${selectedCardData.price}\nFF UID: ${ffUid}\nIn-Game Name: ${ffName}`
@@ -133,6 +134,7 @@ export default function TopUpRate() {
                 <p>Rs. {price}</p>{" "}
                 <span className=" line-through text-gray-400">{realPrice}</span>
               </div>
+            
               {selectedCard === id ? <CircleCheck color="green" /> : null}
             </div>
           </motion.div>
