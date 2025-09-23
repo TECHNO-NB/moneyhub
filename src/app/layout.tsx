@@ -19,17 +19,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title:
-    "MoneyHub – Free Fire Top-Up, TikTok Followers, 1xBet Deposit in Nepal, Forex Trading",
+    "MoneyHub – Free Fire Top-Up.",
 
   description:
-    "MoneyHub.store is Nepal's #1 platform to top-up Free Fire diamonds, buy TikTok & Instagram followers, and deposit in Stake/1xBet using eSewa, Khalti, or IME Pay.",
+    "MoneyHub.store is Nepal's #1 platform to top-up Free Fire diamonds.",
   keywords: [
     "Free Fire Top Up Nepal",
-    "Buy TikTok followers Nepal",
-    "1xBet deposit Nepal",
-    "Stake deposit Nepal",
-    "Instagram likes",
-    "TikTok likes",
+   
     "MoneyHub store",
     "eSewa Free Fire",
     "Khalti Topup",
@@ -42,15 +38,14 @@ export const metadata: Metadata = {
     "freefire topup nepal",
     "freefire topup",
     "earning app",
-    "trading",
-    "forex trading",
+   
   ],
   authors: [{ name: "MoneyHub Team" }],
   metadataBase: new URL("https://moneyhub.store"),
   openGraph: {
     title: "MoneyHub – Nepal's Best Top-Up Store",
     description:
-      "Buy Free Fire diamonds, TikTok/Instagram followers, and 1xBet/Stake deposits with secure payment via eSewa, Khalti, IME Pay.",
+      "Buy Free Fire diamonds.",
     url: "https://moneyhub.store",
     siteName: "MoneyHub",
     locale: "en_NP",
@@ -58,9 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MoneyHub – Nepal's Trusted Game Top-Up & Social Boost",
+    title: "MoneyHub – Nepal's Trusted Game Top-Up",
     description:
-      "Get Free Fire diamonds, TikTok likes, Instagram followers, and deposit into Stake/1xBet with eSewa or Khalti.",
+      "Get Free Fire diamonds",
     creator: "@moneyhubstore", // Replace with your Twitter handle
   },
   icons: {
