@@ -52,7 +52,7 @@ export default function Home() {
         </motion.div>
       </section>
       {/* Matches Section */}
-     <section>
+     <section className="px-4">
       <MatchComp/>
 
      </section>
