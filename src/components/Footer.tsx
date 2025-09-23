@@ -10,16 +10,17 @@ const Footer = () => {
     <div>
       <h2 className="text-2xl font-bold mb-4 text-yellow-400">MoneyHub</h2>
       <p className="text-sm text-gray-400">
-        {/* Earn money online with trusted platforms like Stake, 1xBet, and FF TopUp. Start your journey with MoneyHub today. */}
+      Play Games & Earn Money
+✨ Also offering Free Fire Top-Ups at the best rates!
       </p>
     </div>
 
     <div>
       <h3 className="text-lg font-semibold mb-3">Navigation</h3>
       <ul className="space-y-2 text-gray-300 text-sm">
-        {/* <li><Link href="/stake" className="hover:text-yellow-400">Stake</Link></li>
-        <li><Link href="/1xbet" className="hover:text-yellow-400">1xBet</Link></li>
-        <li><Link href="/ff-topup" className="hover:text-yellow-400">FF TopUp</Link></li> */}
+         <li><Link href="/games" className="hover:text-yellow-400">Games</Link></li>
+        <li><Link href="/add-coin" className="hover:text-yellow-400">Add Coin</Link></li>
+        <li><Link href="/ff-topup" className="hover:text-yellow-400">FF TopUp</Link></li> 
       </ul>
     </div>
 

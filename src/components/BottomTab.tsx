@@ -17,7 +17,7 @@ export default function BottomTab() {
 
   const tabs = [
     { name: "Home", icon: <Home />, key: "/" },
-    { name: "Store", icon: <Store />, key: "/store" },
+    { name: "TopUp", icon: <Store />, key: "/ff-topup" },
     { name: "Games", icon: <Gamepad2 />, key: "/games" },
     { name: "Notification", icon: <Bell />, key: "/notification" },
     {
