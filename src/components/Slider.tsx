@@ -27,29 +27,29 @@ export default function Slider() {
               src="https://wallpapers.com/images/hd/4k-free-fire-characters-working-together-8bh4bpve4raxr2ll.jpg"
               alt="Free Fire"
               fill
-              className="object-cover rounded-2xl"
+              className="object-cover rounded-2xl border-2 border-yellow-400"
             />
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full h-[300px]">
+          <div className="w-full h-[300px] border-2 border-yellow-400">
             <Image
               src={topuprate}
               alt="Gaming"
               fill
-              className="object-cover rounded-2xl"
+              className="object-cover rounded-2xl border-2 border-yellow-400"
             />
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className="w-full h-[300px]">
+          <div className="w-full h-[300px] border-2 border-yellow-400">
             <Image
               src="https://tse4.mm.bing.net/th/id/OIP.JfNdlwKPrz_pQYu9ud1pNQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
               alt="Gamer Setup"
               fill
-              className="object-cover rounded-2xl"
+              className="object-cover rounded-2xl border-2 border-yellow-400"
             />
           </div>
         </SwiperSlide>
