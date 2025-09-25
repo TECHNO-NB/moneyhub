@@ -59,7 +59,7 @@ const MatchComp = () => {
       <div className="flex justify-center gap-4 my-6">
         <button
           onClick={() => setActiveTab("available")}
-          className={`px-4 py-2 cursor-pointer rounded-lg font-bold transition ${
+          className={`px-4 py-2 cursor-pointer rounded-lg text-center font-bold transition ${
             activeTab === "available"
               ? "bg-yellow-500 text-black"
               : "bg-gray-800 text-gray-300 hover:bg-gray-700"
@@ -80,10 +80,10 @@ const MatchComp = () => {
       </div>
 
       {/* Matches Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {activeTab === "available" ? (
           isCardLoad ? (
-            Array.from({ length: 2 }).map((_, i) => <GamesLoading key={i} />)
+            Array.from({ length: 3 }).map((_, i) => <GamesLoading key={i} />)
           ) : matches.length === 0 ? (
             <h1 className="text-center text-white text-xl col-span-2">
               No Matches Found

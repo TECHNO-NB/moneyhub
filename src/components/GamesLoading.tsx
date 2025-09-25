@@ -3,7 +3,7 @@ import React from "react";
 
 const GamesLoading = () => {
   return (
-    <div className="flex  justify-center max-w-fit h-full min-w-fit ">
+    <div className="flex  justify-center ">
       <div className="p-6 bg-gray-900 rounded-lg max-w-fit animate-pulse">
         {/* Header */}
         <div className="flex items-center gap-4">

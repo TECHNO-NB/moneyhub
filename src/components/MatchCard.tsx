@@ -59,13 +59,15 @@ export default function MatchCard({
         </div>
       ) : null}
       <div className="flex items-center gap-4">
-        <Image
+        <div className="max-w-2xl rounded-full">
+    <Image
           src="https://cdn.vectorstock.com/i/1000v/30/87/free-fire-logo-game-idea-vector-51373087.jpg"
           alt="match banner"
           width={30}
           height={30}
-          className="rounded-full border-2 border-yellow-400 object-cover"
-        />
+          className="border-2 border-yellow-400 object-fit"
+          />
+          </div>
         <div>
           <h2 className="text-xl font-bold text-yellow-300">{match.title}</h2>
           <p className="text-sm text-gray-400 break-all">{match.id}</p>

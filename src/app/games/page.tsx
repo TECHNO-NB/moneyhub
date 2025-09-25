@@ -1,14 +1,11 @@
 "use client";
 /* eslint-disable */
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+
 import { motion } from "framer-motion";
-import { BowArrow } from "lucide-react";
+
 import Image from "next/image";
-import GamesLoading from "@/components/GamesLoading";
-import JoinFfMatch from "@/components/JoinFfMatch";
-import MatchCard from "@/components/MatchCard";
-import EnteredMatches from "@/components/EnteredMatches";
+
 import MatchComp from "@/components/MatchComp";
 
 export default function page() {
@@ -33,7 +30,7 @@ export default function page() {
             src="https://wallpapers.com/images/hd/4k-free-fire-characters-working-together-8bh4bpve4raxr2ll.jpg"
             alt="FF Banner"
             width={1000}
-            height={300}
+            height={80}
             className="w-full rounded-xl shadow-2xl object-cover border-2 border-yellow-400"
           />
          </motion.div>

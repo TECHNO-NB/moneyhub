@@ -32,14 +32,14 @@ export default function Home() {
       <section className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between max-w-7xl mx-auto px-4 py-10 md:py-24 gap-12">
         {/* Left Content */}
         <motion.div
-          className="w-full md:w-1/2 text-center md:text-left"
+          className="w-full  text-center flex flex-col justify-center md:text-left"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-4xl md:text-6xl font-extrabold leading-tight -mt-6">
+          <h2 className="text-4xl md:text-6xl font-extrabold leading-tight -mt-6 text-center">
            
-            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-center text-transparent">
               MoneyHub
             </span>
           </h2>
