@@ -1,13 +1,31 @@
 "use client";
-
+/* eslint-disable */
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import topuprate from "../../public/topup-rate.jpg";
 
 import "swiper/css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Slider() {
+  const [data,setData]=useState([])
+
+    useEffect(() => {
+    const fetchAllImages = async () => {
+      try {
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/get-all-banner`
+        );
+
+        setData(res.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAllImages();
+  }, []);
   return (
     <div className="w-full max-w-5xl mx-auto mt-6">
       <Swiper
@@ -21,18 +39,22 @@ export default function Slider() {
         slidesPerView={1}
         className="rounded-2xl shadow-lg"
       >
-        <SwiperSlide>
+
+        {data && data.map((val:any,index)=>(
+
+          <SwiperSlide key={index}>
           <div className="w-full h-[300px]">
             <Image
-              src="https://wallpapers.com/images/hd/4k-free-fire-characters-working-together-8bh4bpve4raxr2ll.jpg"
+              src={val.image}
               alt="Free Fire"
               fill
-              className="object-cover rounded-2xl border-2 border-yellow-400"
-            />
+              className="object-fit rounded-2xl border-2 border-yellow-400"
+              />
           </div>
         </SwiperSlide>
+            ))}
 
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div className="w-full h-[300px] border-2 border-yellow-400">
             <Image
               src={topuprate}
@@ -52,7 +74,7 @@ export default function Slider() {
               className="object-cover rounded-2xl border-2 border-yellow-400"
             />
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );
