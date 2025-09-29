@@ -58,7 +58,7 @@ export default function Slider() {
           ))
         ) : (
           <SwiperSlide>
-            <div className="relative w-full h-[300px]">
+            <div className="relative w-full h-[250px] md:h-[340px]">
               <Image
                 src="https://tse4.mm.bing.net/th/id/OIP.JfNdlwKPrz_pQYu9ud1pNQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
                 alt="Default Banner"
