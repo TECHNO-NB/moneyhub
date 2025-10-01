@@ -24,11 +24,13 @@ import toast from "react-hot-toast";
 import { usePathname, useRouter } from "next/navigation";
 import LoaderSpinner from "@/components/Loader";
 import Link from "next/link";
+import { LuCoins } from "react-icons/lu";
+import TransferCoin from "@/components/TransferCoin";
 
 const tabs = [
   { label: "Personal Details", icon: User },
   { label: "History", icon: History },
-  { label: "Buy Products", icon: ShoppingBag },
+  { label: "Transfer Coin", icon: LuCoins },
   { label: "Redeem Coin", icon: Gift },
   { label: "Records", icon: Layers },
   { label: "Terms & Conditions", icon: FileText },
@@ -83,6 +85,15 @@ export default function ProfilePage() {
     }
   }, [pathname, userData]);
 
+  const handleCopy = async (copyText: string) => {
+    try {
+      if (copyText) {
+        await navigator.clipboard.writeText(copyText);
+        toast.success("Copied Id");
+      }
+    } catch (error) {}
+  };
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-black to-zinc-900 text-white p-4 sm:p-8">
       {isLoading ? <LoaderSpinner /> : null}
@@ -101,6 +112,16 @@ export default function ProfilePage() {
               <div>
                 <h1 className="text-2xl font-bold">{userData.fullName}</h1>
                 <p className="text-gray-400 text-sm">{userData.email}</p>
+                <p>
+                  ID:{" "}
+                  <span className="text-gray-400 text-sm">{userData.id}</span>
+                  <button
+                    onClick={() => handleCopy(userData.id)}
+                    className="ml-2 border-2  px-4 text-sm rounded-xl cursor-pointer hover:bg-white hover:text-black"
+                  >
+                    Copy
+                  </button>
+                </p>
               </div>
             </div>
 
@@ -166,31 +187,15 @@ export default function ProfilePage() {
           {activeTab === "History" && (
             <div>
               <h2 className="text-xl font-semibold mb-4">Coin History</h2>
-              {/* <ul className="space-y-2 text-gray-300">
-                <li>✅ Watched ad – Earned 50 coins</li>
-                <li>🛒 Redeemed gift card – Spent 20 coins</li>
-                <li>🎉 Referral bonus – Earned 100 coins</li>
-              </ul> */}
+             
             </div>
           )}
 
-          {activeTab === "Buy Products" && (
+          {activeTab === "Transfer Coin" && (
             <div>
-              <h2 className="text-xl font-semibold mb-4">Product Orders</h2>
-              {/* <ul className="space-y-4 text-gray-300">
-                <li>
-                  🎧 Wireless Earbuds –{" "}
-                  <span className="text-green-400">✅ Delivered</span>
-                </li>
-                <li>
-                  🧢 Custom Cap –{" "}
-                  <span className="text-yellow-400">⏳ Pending</span>
-                </li>
-                <li>
-                  🕹️ Gamepad –{" "}
-                  <span className="text-green-400">✅ Delivered</span>
-                </li>
-              </ul> */}
+              <h2 className="text-xl font-semibold mb-4">Transfer Coin</h2>
+              <TransferCoin userId={userData.id}/>
+             
             </div>
           )}
 
@@ -292,7 +297,9 @@ export default function ProfilePage() {
           {activeTab === "Support" && (
             <div>
               <h2 className="text-xl font-semibold mb-4 text-white">Support</h2>
-              <p className="text-gray-300">Need help? Reach us anytime. (click to message and call)</p>
+              <p className="text-gray-300">
+                Need help? Reach us anytime. (click to message and call)
+              </p>
               <ul className="mt-3 space-y-4 text-gray-300">
                 {/* Gmail */}
                 <li className="flex items-center space-x-3">
@@ -373,7 +380,15 @@ export default function ProfilePage() {
                 {/* Website Chat */}
                 <li className="flex items-center space-x-3">
                   <div className="bg-blue-500 p-2 rounded-full">🌐</div>
-                 <Link href="/chatwithadmin"><span>Website Chat: Available 24/7 <span className=" bg-red-600 rounded-full p-2 font-bold"> !Coming soon</span></span></Link> 
+                  <Link href="/chatwithadmin">
+                    <span>
+                      Website Chat: Available 24/7{" "}
+                      <span className=" bg-red-600 rounded-full p-2 font-bold">
+                        {" "}
+                        !Coming soon
+                      </span>
+                    </span>
+                  </Link>
                 </li>
               </ul>
             </div>
